@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FaCode } from "react-icons/fa";
 import { API_URL, API_KEY, IMAGE_BASE_URL } from '../../Config';
 import MainImage from './Sections/MainImage';
-import axios from 'axios';
+// import axios from 'axios';
 import GridCards from '../commons/GridCards';
 import { Row } from 'antd';
 
@@ -13,7 +13,7 @@ function LandingPage() {
     const [CurrentPage, setCurrentPage] = useState(0)
 
     useEffect(() => {
-        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko&page=1`;
+        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=1`;
 
         fetchMovies(endpoint)
 
@@ -34,7 +34,7 @@ function LandingPage() {
         
     const loadMoreItems = () => {
 
-        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrentPage + 1}`;
+        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko&page=${CurrentPage + 1}`;
         fetchMovies(endpoint)
 
     }
@@ -64,6 +64,7 @@ function LandingPage() {
                 {Movies && Movies.map((movie, index) => (
                     <React.Fragment key={index}>
                         <GridCards
+                            landingPage
                             image={movie.poster_path ?
                                 `${IMAGE_BASE_URL}w500${movie.poster_path}` : null}
                             movieId={movie.id}
