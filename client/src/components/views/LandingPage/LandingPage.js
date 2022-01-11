@@ -10,23 +10,35 @@ function LandingPage() {
     
     const [Movies, setMovies] = useState([])
     const [MainMovieImage, setMainMovieImage] = useState(null) 
+    const [CurrentPage, setCurrentPage] = useState(0)
 
     useEffect(() => {
         const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko&page=1`;
 
+        fetchMovies(endpoint)
+
+    }, [])
+    
+    const fetchMovies = (endpoint) => {
         fetch(endpoint)
         .then(response => response.json())
         .then(response => {
 
-            console.log(response.results)
+            console.log(response)
 
-            setMovies([...response.results])
+            setMovies([...Movies, ...response.results]) //...Movies : 처음의 20개보존
             setMainMovieImage(response.results[0])
+            setCurrentPage(response.page)
         })
-
-    }, [])
-    
+    }
         
+    const loadMoreItems = () => {
+
+        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrentPage + 1}`;
+        fetchMovies(endpoint)
+
+    }
+
     return (    
         <div style={{ width: '100%', margin: '0'}}>
 
@@ -34,7 +46,7 @@ function LandingPage() {
             {MainMovieImage &&
                 <MainImage
                     image={`${IMAGE_BASE_URL}w1280${MainMovieImage.backdrop_path}`}
-                    title={MainMovieImage.original_title}
+                    title={MainMovieImage.title}
                     text={MainMovieImage.overview}
                 />
             }
@@ -55,7 +67,7 @@ function LandingPage() {
                             image={movie.poster_path ?
                                 `${IMAGE_BASE_URL}w500${movie.poster_path}` : null}
                             movieId={movie.id}
-                            movieName={movie.original_title}
+                            movieName={movie.title}
                         />
                     </React.Fragment>
                 ))}
@@ -64,7 +76,7 @@ function LandingPage() {
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <button> Load More </button>
+                <button onClick={loadMoreItems}> Load More </button>
             </div>
         </div>
     )
