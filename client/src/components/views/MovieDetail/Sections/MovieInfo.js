@@ -6,17 +6,15 @@ function MovieInfo(props) {
     let { movie } = props;
 
     return (
-        <Descriptions title="Movie Info" bordered>
-            <Descriptions.Item label="Title">{movie.original_title}</Descriptions.Item>
-            <Descriptions.Item label="release_date">{movie.release_date}</Descriptions.Item>
+        <Descriptions title="영화정보" bordered>
+            <Descriptions.Item label="제목">{movie.title}</Descriptions.Item>
+            <Descriptions.Item label="개봉일">{movie.release_date}</Descriptions.Item>
+            <Descriptions.Item label="런타임">{movie.runtime} 분</Descriptions.Item>
+            <Descriptions.Item label="평점">{movie.vote_average} / 10</Descriptions.Item>
+            <Descriptions.Item label="상태">{movie.status}</Descriptions.Item>
+            {/* <Descriptions.Item label="vote_count">{movie.vote_count}</Descriptions.Item>
             <Descriptions.Item label="revenue">{movie.revenue}</Descriptions.Item>
-            <Descriptions.Item label="runtime">{movie.runtime}</Descriptions.Item>
-            <Descriptions.Item label="vote_average" span={2}>
-                {movie.vote_average}
-            </Descriptions.Item>
-            <Descriptions.Item label="vote_count">{movie.vote_count}</Descriptions.Item>
-            <Descriptions.Item label="status">{movie.status}</Descriptions.Item>
-            <Descriptions.Item label="popularity">{movie.popularity}</Descriptions.Item>
+            <Descriptions.Item label="popularity">{movie.popularity}</Descriptions.Item> */}
         </Descriptions>
     )
 }
