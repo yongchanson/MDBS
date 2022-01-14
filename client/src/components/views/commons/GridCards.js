@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col } from 'antd';
 
+
 function GridCards(props) {
     
     if(props.landingPage){

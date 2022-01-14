@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { FaCode } from "react-icons/fa";
 import { API_URL, API_KEY, IMAGE_BASE_URL } from '../../Config';
-import MainImage from './Sections/MainImage';
+import MainImage from '../../views/commons/MainImage'; 
 // import axios from 'axios';
 import GridCards from '../commons/GridCards';
 import { Row } from 'antd';
+import noImg from '../commons/noImg.png';
 
 function LandingPage() {
     
@@ -24,7 +25,7 @@ function LandingPage() {
         .then(response => response.json())
         .then(response => {
 
-            console.log(response)
+            // console.log(response)
 
             setMovies([...Movies, ...response.results]) //...Movies : 처음의 20개보존
             setMainMovieImage(response.results[0])
@@ -34,7 +35,7 @@ function LandingPage() {
         
     const loadMoreItems = () => {
 
-        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko&page=${CurrentPage + 1}`;
+        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=${CurrentPage + 1}`;
         fetchMovies(endpoint)
 
     }
@@ -54,7 +55,7 @@ function LandingPage() {
             
             <div style={{ width: '85%', margin: '1rem auto'}}>
                 
-                <h2>Movies by latest</h2>
+                <h1>최신영화</h1>
                 <hr />
 
                 {/* movie grid cards */}
@@ -66,7 +67,7 @@ function LandingPage() {
                         <GridCards
                             landingPage
                             image={movie.poster_path ?
-                                `${IMAGE_BASE_URL}w500${movie.poster_path}` : null}
+                                `${IMAGE_BASE_URL}w500${movie.poster_path}` : noImg}
                             movieId={movie.id}
                             movieName={movie.title}
                         />

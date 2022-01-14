@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE } from '../../Config'
-import MainImage from '../../views/LandingPage/Sections/MainImage'; 
+import MainImage from '../../views/commons/MainImage'; 
 import MovieInfo from './Sections/MovieInfo';
 import GridCards from '../commons/GridCards';
 import { Row } from 'antd';
 import Favorite from './Sections/Favorite';
+import noImg from '../commons/noImg.png';
 
 function MovieDetail(props) {
     
@@ -79,7 +80,7 @@ function MovieDetail(props) {
                         <React.Fragment key={index}>
                             <GridCards
                                 image={cast.profile_path ?
-                                    `${IMAGE_BASE_URL}w500${cast.profile_path}` : null}
+                                    `${IMAGE_BASE_URL}w500${cast.profile_path}` : noImg}
                                 castId={cast.id}
                                 castName={cast.name}
                             />
