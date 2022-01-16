@@ -10,16 +10,27 @@ import Footer from "./views/Footer/Footer"
 import MovieDetail from "./views/MovieDetail/MovieDetail";
 import FavoritePage from "./views/FavoritePage/FavoritePage";
 import CastPage from "./views/Cast/CastPage";
+import styled from 'styled-components';
+
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
 //false  logged in user can't go inside
 
+// const Wrapper = styled.div`
+//   paddingTop: '69px';
+//   minHeight: 'calc(100vh - 80px)';
+//   /* background-color: #fbc531; */
+// `;
+
+
 function App() {
   return (
     <Suspense fallback={(<div>Loading...</div>)}>
+      {/* <Wrapper>  */}
       <NavBar />
       <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
+       
         <Switch>
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
@@ -28,8 +39,10 @@ function App() {
           <Route exact path="/cast/:castId" component={Auth(CastPage, null)} />
           <Route exact path="/favorite" component={Auth(FavoritePage, true)} />
         </Switch>
+        <Footer />
+      {/* </Wrapper> */}
       </div>
-      <Footer />
+      
     </Suspense>
   );
 }
