@@ -6,6 +6,7 @@ import { USER_SERVER } from '../../../Config';
 import { withRouter } from 'react-router-dom';
 import { useSelector } from "react-redux";
 // import { Button } from 'antd';
+import { Link } from "react-router-dom";
 
 function RightMenu(props) {
   const user = useSelector(state => state.user)
@@ -25,9 +26,15 @@ function RightMenu(props) {
       <Menu mode={props.mode}>
         <Menu.Item key="mail">
           <a href="/login">로그인</a>
+          {/* <Link to="/login">
+          로그인
+          </Link> */}
         </Menu.Item>
         <Menu.Item key="app">
           <a href="/register">가입하기</a>
+          {/* <Link to="/register">
+          가입하기
+          </Link> */}
         </Menu.Item>
       </Menu>
     )
