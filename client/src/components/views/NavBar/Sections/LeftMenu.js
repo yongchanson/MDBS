@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu } from 'antd';
-// import { motion } from 'framer-motion/dist/es/index'
+// import { motion } from 'framer-motion/dist/es/index';
 import { motion } from 'framer-motion';
 import styled from "styled-components";
 import { Link, useRouteMatch } from "react-router-dom";
