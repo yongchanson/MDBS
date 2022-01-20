@@ -16,18 +16,17 @@ import styled from "styled-components";
 //true   only logged in user can go inside
 //false  logged in user can't go inside
 
-// const Wrapper = styled.div`
-//   paddingTop: '69px';
-//   minHeight: 'calc(100vh - 80px)';
-//   /* background-color: #fbc531; */
-// `;
+const Wrapper = styled.div`
+  paddingtop: "69px";
+  minheight: "calc(100vh - 80px)";
+  /* background-color: #fbc531; */
+`;
 
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      {/* <Wrapper>  */}
       <NavBar />
-      <div style={{ paddingTop: "69px", minHeight: "calc(100vh - 80px)" }}>
+      <Wrapper>
         <Switch>
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
@@ -41,8 +40,7 @@ function App() {
           <Route exact path="/favorite" component={Auth(FavoritePage, true)} />
         </Switch>
         <Footer />
-        {/* </Wrapper> */}
-      </div>
+      </Wrapper>
     </Suspense>
   );
 }
