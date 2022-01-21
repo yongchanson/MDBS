@@ -40,6 +40,7 @@ function LandingPage() {
   return (
     <div style={{ width: "100%", margin: "0" }}>
       {/* main페이지 */}
+
       {MainMovieImage && (
         <MainImage
           image={`${IMAGE_BASE_URL}w1280${MainMovieImage.backdrop_path}`}

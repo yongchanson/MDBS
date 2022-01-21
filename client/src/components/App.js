@@ -25,8 +25,9 @@ const Wrapper = styled.div`
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <NavBar />
       <Wrapper>
+        <NavBar></NavBar>
+
         <Switch>
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
