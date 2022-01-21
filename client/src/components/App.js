@@ -12,8 +12,9 @@ import FavoritePage from "./views/FavoritePage/FavoritePage";
 import CastPage from "./views/Cast/CastPage";
 
 import styled, { ThemeProvider } from "styled-components";
-import Providers from "./Providers";
-import { dark, light } from "./theme"; // 환경별 테마 정보 가져오기
+// import Providers from "./Providers";
+import { GlobalStyles } from "./globalStyles";
+import { lightTheme, darkTheme } from "./theme";
 import DarkModeToggle from "react-dark-mode-toggle";
 
 //null   Anyone Can go inside
@@ -27,27 +28,45 @@ const Wrapper = styled.div`
 `;
 
 function App() {
+  const [theme, setTheme] = useState(false);
+
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Wrapper>
-        <NavBar></NavBar>
+    <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
+      <GlobalStyles />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Wrapper>
+          <DarkModeToggle onChange={setTheme} checked={theme} size={80} />
+          <NavBar></NavBar>
 
-        <Switch>
-          <Route exact path="/" component={Auth(LandingPage, null)} />
-          <Route exact path="/login" component={Auth(LoginPage, false)} />
-          <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route
-            exact
-            path="/movie/:movieId"
-            component={Auth(MovieDetail, null)}
-          />
-          <Route exact path="/cast/:castId" component={Auth(CastPage, null)} />
-          <Route exact path="/favorite" component={Auth(FavoritePage, true)} />
-        </Switch>
+          <Switch>
+            <Route exact path="/" component={Auth(LandingPage, null)} />
+            <Route exact path="/login" component={Auth(LoginPage, false)} />
+            <Route
+              exact
+              path="/register"
+              component={Auth(RegisterPage, false)}
+            />
+            <Route
+              exact
+              path="/movie/:movieId"
+              component={Auth(MovieDetail, null)}
+            />
+            <Route
+              exact
+              path="/cast/:castId"
+              component={Auth(CastPage, null)}
+            />
+            <Route
+              exact
+              path="/favorite"
+              component={Auth(FavoritePage, true)}
+            />
+          </Switch>
 
-        <Footer />
-      </Wrapper>
-    </Suspense>
+          <Footer />
+        </Wrapper>
+      </Suspense>
+    </ThemeProvider>
   );
 }
 

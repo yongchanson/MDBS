@@ -14,7 +14,7 @@ const Nav = styled.div`
 `;
 
 function NavBar() {
-  const [isDarkMode, setIsDarkMode] = useState(() => false);
+  // const [isDarkMode, setIsDarkMode] = useState(false);
 
   const [visible, setVisible] = useState(false);
 
@@ -36,11 +36,11 @@ function NavBar() {
           <LeftMenu mode="horizontal" />
         </div>
 
-        <DarkModeToggle
+        {/* <DarkModeToggle
           onChange={setIsDarkMode}
           checked={isDarkMode}
           size={80}
-        />
+        /> */}
 
         <div className="menu_rigth">
           <RightMenu mode="horizontal" />
