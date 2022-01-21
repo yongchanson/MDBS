@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
 // pages for this product
@@ -10,7 +10,11 @@ import Footer from "./views/Footer/Footer";
 import MovieDetail from "./views/MovieDetail/MovieDetail";
 import FavoritePage from "./views/FavoritePage/FavoritePage";
 import CastPage from "./views/Cast/CastPage";
-import styled from "styled-components";
+
+import styled, { ThemeProvider } from "styled-components";
+import Providers from "./Providers";
+import { dark, light } from "./theme"; // 환경별 테마 정보 가져오기
+import DarkModeToggle from "react-dark-mode-toggle";
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -40,6 +44,7 @@ function App() {
           <Route exact path="/cast/:castId" component={Auth(CastPage, null)} />
           <Route exact path="/favorite" component={Auth(FavoritePage, true)} />
         </Switch>
+
         <Footer />
       </Wrapper>
     </Suspense>
