@@ -1,6 +1,17 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button } from "antd";
+// import { Button } from "antd";
+import styled from "styled-components";
+
+const Button = styled.button`
+  background: ${({ theme }) => theme.toggleBody};
+  border: 2px solid ${({ theme }) => theme.toggleBorder};
+  color: ${({ theme }) => theme.text};
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 0.6rem;
+`;
 
 function Favorite(props) {
   const movieId = props.movieId;

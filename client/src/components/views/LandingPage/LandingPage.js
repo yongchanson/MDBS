@@ -61,7 +61,7 @@ function LandingPage() {
       )}
 
       <div style={{ width: "85%", margin: "1rem auto" }}>
-        <h1>최신영화</h1>
+        <div style={{ fontSize: "2rem" }}> 최신영화 </div>
         <hr />
 
         {/* movie grid cards */}

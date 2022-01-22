@@ -7,12 +7,24 @@ import GridCards from "../commons/GridCards";
 import { Row } from "antd";
 import Favorite from "./Sections/Favorite";
 import noImg from "../commons/noImg.png";
+import styled from "styled-components";
+
+const Button = styled.button`
+  background: ${({ theme }) => theme.toggleBody};
+  border: 2px solid ${({ theme }) => theme.toggleBorder};
+  color: ${({ theme }) => theme.text};
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 0.6rem;
+`;
 
 function MovieDetail(props) {
   let movieId = props.match.params.movieId; //라우터의 movieId을 가져오는 방식
   const [Movie, setMovie] = useState([]);
   const [Casts, setCasts] = useState([]);
   const [ActorToggle, setActorToggle] = useState(false);
+  const [MainMovieImage, setMainMovieImage] = useState(null);
 
   useEffect(() => {
     let endpointCrew = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
@@ -41,11 +53,13 @@ function MovieDetail(props) {
   return (
     <div>
       {/* Header */}
-      <MainImage
-        image={`${IMAGE_BASE_URL}w1280${Movie.backdrop_path}`}
-        title={Movie.title}
-        text={Movie.overview}
-      />
+      {MainMovieImage && (
+        <MainImage
+          image={`${IMAGE_BASE_URL}w1280${Movie.backdrop_path}`}
+          title={Movie.title}
+          text={Movie.overview}
+        />
+      )}
 
       {/* Body */}
       <div style={{ width: "85%", margin: "1rem auto" }}>
@@ -66,7 +80,7 @@ function MovieDetail(props) {
         <div
           style={{ display: "flex", justifyContent: "center", margin: "2rem" }}
         >
-          <button onClick={toggleActorView}> 출연배우 보기 </button>
+          <Button onClick={toggleActorView}> 출연배우 보기 </Button>
         </div>
 
         {ActorToggle && (
