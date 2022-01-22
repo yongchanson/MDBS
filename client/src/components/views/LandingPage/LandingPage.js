@@ -4,6 +4,17 @@ import MainImage from "../../views/commons/MainImage";
 import GridCards from "../commons/GridCards";
 import { Row } from "antd";
 import noImg from "../commons/noImg.png";
+import styled from "styled-components";
+
+const Button = styled.button`
+  background: ${({ theme }) => theme.toggleBody};
+  border: 2px solid ${({ theme }) => theme.toggleBorder};
+  color: ${({ theme }) => theme.text};
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 0.6rem;
+`;
 
 function LandingPage() {
   const [Movies, setMovies] = useState([]);
@@ -75,7 +86,7 @@ function LandingPage() {
       </div>
 
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <button onClick={loadMoreItems}> Load More </button>
+        <Button onClick={loadMoreItems}> Load More </Button>
       </div>
     </div>
   );

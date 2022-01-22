@@ -12,7 +12,6 @@ import FavoritePage from "./views/FavoritePage/FavoritePage";
 import CastPage from "./views/Cast/CastPage";
 
 import styled, { ThemeProvider } from "styled-components";
-// import Providers from "./Providers";
 import { GlobalStyles } from "./globalStyles";
 import { lightTheme, darkTheme } from "./theme";
 import DarkModeToggle from "react-dark-mode-toggle";

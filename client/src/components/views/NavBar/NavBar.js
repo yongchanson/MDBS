@@ -5,7 +5,9 @@ import { Drawer, Button, Icon } from "antd";
 import "./Sections/Navbar.css";
 import styled from "styled-components";
 
-import DarkModeToggle from "react-dark-mode-toggle";
+// import DarkModeToggle from "react-dark-mode-toggle";
+// import { GlobalStyles } from "../../globalStyles";
+// import { lightTheme, darkTheme } from "../../theme";
 
 const Nav = styled.div`
   position: fixed;
@@ -15,6 +17,7 @@ const Nav = styled.div`
 
 function NavBar() {
   // const [isDarkMode, setIsDarkMode] = useState(false);
+  // const [theme, setTheme] = useState(false);
 
   const [visible, setVisible] = useState(false);
 
@@ -35,7 +38,7 @@ function NavBar() {
         <div className="menu_left">
           <LeftMenu mode="horizontal" />
         </div>
-
+        {/* <DarkModeToggle onChange={setTheme} checked={theme} size={80} /> */}
         {/* <DarkModeToggle
           onChange={setIsDarkMode}
           checked={isDarkMode}
