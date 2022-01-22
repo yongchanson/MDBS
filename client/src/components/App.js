@@ -26,6 +26,13 @@ const Wrapper = styled.div`
   /* background-color: #fbc531; */
 `;
 
+const DarkMode = styled.div`
+  position: fixed;
+  z-index: 10;
+  right: 50%;
+  top: 4%;
+`;
+
 function App() {
   const [theme, setTheme] = useState(false);
 
@@ -33,8 +40,10 @@ function App() {
     <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
       <GlobalStyles />
       <Suspense fallback={<div>Loading...</div>}>
+        <DarkMode>
+          <DarkModeToggle onChange={setTheme} checked={theme} size={60} />
+        </DarkMode>
         <Wrapper>
-          <DarkModeToggle onChange={setTheme} checked={theme} size={80} />
           <NavBar></NavBar>
 
           <Switch>
