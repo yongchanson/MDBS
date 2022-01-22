@@ -40,9 +40,9 @@ function App() {
     <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
       <GlobalStyles />
       <Suspense fallback={<div>Loading...</div>}>
-        <DarkMode>
+        {/* <DarkMode>
           <DarkModeToggle onChange={setTheme} checked={theme} size={60} />
-        </DarkMode>
+        </DarkMode> */}
         <Wrapper>
           <NavBar></NavBar>
 
