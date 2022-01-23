@@ -39,28 +39,30 @@ function CastPage(props) {
   };
 
   return (
-    <div style={{ width: "85%", margin: "1rem auto" }}>
-      <h1>{Casts} 의 출연작품</h1>
-
-      {/* cast grid cards */}
-
-      <Row gutter={[16, 16]}>
-        {Movies &&
-          Movies.map((movie, index) => (
-            <React.Fragment key={index}>
-              <GridCards
-                movieList
-                image={
-                  movie.poster_path
-                    ? `${IMAGE_BASE_URL}w500${movie.poster_path}`
-                    : noImg
-                }
-                movieId={movie.id}
-                movieName={movie.title}
-              />
-            </React.Fragment>
-          ))}
-      </Row>
+    <div style={{ width: "100%", margin: "0" }}>
+      {/* 이부분이 사라지면 헤더위치가 바뀜 */}
+      <h1>{Casts}의 정보</h1>
+      <div style={{ width: "85%", margin: "3rem auto" }}>
+        {/* cast grid cards */}
+        <h1>{Casts} 의 출연작품</h1>
+        <Row gutter={[16, 16]}>
+          {Movies &&
+            Movies.map((movie, index) => (
+              <React.Fragment key={index}>
+                <GridCards
+                  movieList
+                  image={
+                    movie.poster_path
+                      ? `${IMAGE_BASE_URL}w500${movie.poster_path}`
+                      : noImg
+                  }
+                  movieId={movie.id}
+                  movieName={movie.title}
+                />
+              </React.Fragment>
+            ))}
+        </Row>
+      </div>
     </div>
   );
 }

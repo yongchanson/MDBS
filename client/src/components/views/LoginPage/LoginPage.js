@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { loginUser } from "../../../_actions/user_actions";
 import { Formik } from "formik";
@@ -23,6 +23,10 @@ function LoginPage(props) {
   const initialEmail = localStorage.getItem("rememberMe")
     ? localStorage.getItem("rememberMe")
     : "";
+
+  // const [theme, setTheme] = useState(false);
+
+  // localStorage.getItem("themes", JSON.parse(theme));
 
   return (
     <Formik

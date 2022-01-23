@@ -1,36 +1,36 @@
-import React, { useState } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import LeftMenu from "./Sections/LeftMenu";
 import RightMenu from "./Sections/RightMenu";
 import { Drawer, Button, Icon } from "antd";
 import "./Sections/Navbar.css";
 import styled, { ThemeProvider } from "styled-components";
 
-import { lightTheme, darkTheme } from "../../theme";
-import { GlobalStyles } from "../../globalStyles";
 import DarkModeToggle from "react-dark-mode-toggle";
-// import DarkModeToggle from "react-dark-mode-toggle";
-// import { GlobalStyles } from "../../globalStyles";
-// import { lightTheme, darkTheme } from "../../theme";
+import { GlobalStyles } from "../../globalStyles";
+import { lightTheme, darkTheme } from "../../theme";
+import { useRecoilValue } from "recoil";
 
 const Nav = styled.div`
   position: fixed;
   z-index: 5;
   width: 100%;
-  background: ${({ theme }) =>
-    theme.body}; //이부분이 추가되면서 nav가 다크모드되기시작
+  //이부분이 추가되면서 nav가 다크모드되기시작
+  background: ${({ theme }) => theme.body};
+  transition: all 0.5s linear;
+  /* color: ${({ theme }) => theme.text}; */
 `;
+
 const DarkMode = styled.div`
   position: fixed;
   z-index: 10;
   right: 50%;
-  top: 4%;
+  top: 10px;
 `;
 
 function NavBar() {
-  // const [isDarkMode, setIsDarkMode] = useState(false);
   const [theme, setTheme] = useState(false);
-
   const [visible, setVisible] = useState(false);
+  // const themeSave = useRecoilValue(theme);
 
   const showDrawer = () => {
     setVisible(true);
@@ -39,6 +39,8 @@ function NavBar() {
   const onClose = () => {
     setVisible(false);
   };
+
+  localStorage.setItem("themes", theme);
 
   return (
     <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
@@ -53,15 +55,11 @@ function NavBar() {
           <div className="menu_left">
             <LeftMenu mode="horizontal" />
           </div>
-          {/* <DarkModeToggle onChange={setTheme} checked={theme} size={80} /> */}
-          {/* <DarkModeToggle
-          onChange={setIsDarkMode}
-          checked={isDarkMode}
-          size={80}
-        /> */}
+
           <DarkMode>
             <DarkModeToggle onChange={setTheme} checked={theme} size={60} />
           </DarkMode>
+
           <div className="menu_rigth">
             <RightMenu mode="horizontal" />
           </div>

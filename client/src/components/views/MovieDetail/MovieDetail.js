@@ -7,7 +7,10 @@ import GridCards from "../commons/GridCards";
 import { Row } from "antd";
 import Favorite from "./Sections/Favorite";
 import noImg from "../commons/noImg.png";
-import styled from "styled-components";
+
+import styled, { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "../../globalStyles";
+import { lightTheme, darkTheme } from "../../theme";
 
 const Button = styled.button`
   background: ${({ theme }) => theme.toggleBody};
@@ -36,6 +39,7 @@ function MovieDetail(props) {
       .then((response) => {
         // console.log(response)
         setMovie(response);
+        setMainMovieImage(response);
       });
 
     fetch(endpointCrew)
@@ -78,7 +82,11 @@ function MovieDetail(props) {
         {/* Actors Grid*/}
 
         <div
-          style={{ display: "flex", justifyContent: "center", margin: "2rem" }}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            margin: "2rem",
+          }}
         >
           <Button onClick={toggleActorView}> 출연배우 보기 </Button>
         </div>

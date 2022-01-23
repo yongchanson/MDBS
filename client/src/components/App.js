@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
 // pages for this product
@@ -24,28 +24,28 @@ const Wrapper = styled.div`
   paddingtop: "69px";
   minheight: "calc(100vh - 80px)";
   /* background-color: #fbc531; */
+  /* background: ${({ theme }) => theme.body}; */
 `;
 
-const DarkMode = styled.div`
-  position: fixed;
-  z-index: 10;
-  right: 50%;
-  top: 4%;
-`;
+// const ThemeProvider = styled.div`
+
+// `;
 
 function App() {
-  const [theme, setTheme] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("themes"));
+
+  useEffect(() => {
+    localStorage.setItem("themes", theme);
+  }, [theme]);
 
   return (
     <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
       <GlobalStyles />
       <Suspense fallback={<div>Loading...</div>}>
-        {/* <DarkMode>
-          <DarkModeToggle onChange={setTheme} checked={theme} size={60} />
-        </DarkMode> */}
         <Wrapper>
-          <NavBar></NavBar>
-
+          {/* <Header> */}
+          <NavBar />
+          {/* </Header> */}
           <Switch>
             <Route exact path="/" component={Auth(LandingPage, null)} />
             <Route exact path="/login" component={Auth(LoginPage, false)} />
@@ -70,6 +70,10 @@ function App() {
               component={Auth(FavoritePage, true)}
             />
           </Switch>
+
+          {/* <DarkMode>
+            <DarkModeToggle onChange={setTheme} checked={theme} size={60} />
+          </DarkMode> */}
 
           <Footer />
         </Wrapper>
