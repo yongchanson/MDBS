@@ -28,9 +28,16 @@ const DarkMode = styled.div`
 `;
 
 function NavBar() {
-  const [theme, setTheme] = useState(false);
+  // const [theme, setTheme] = useState(false);
+  let localValue = localStorage.getItem("themes") === "false" ? false : true;
+  const [theme, setTheme] = useState(localValue);
+
+  // let themeValue = Boolean(localStorage.getItem("themes"));
+  // const [theme, setTheme] = useState(localStorage.getItem("themes"));
   const [visible, setVisible] = useState(false);
-  // const themeSave = useRecoilValue(theme);
+
+  // console.log(Boolean(localStorage.getItem("themes")));
+  // console.log(typeof Boolean(localStorage.getItem("themes")));
 
   const showDrawer = () => {
     setVisible(true);
@@ -40,7 +47,7 @@ function NavBar() {
     setVisible(false);
   };
 
-  localStorage.setItem("themes", theme);
+  localStorage.setItem("themes", theme); //로컬스토리지에 주는 역할
 
   return (
     <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>

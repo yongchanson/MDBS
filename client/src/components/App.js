@@ -36,8 +36,12 @@ const Wrapper = styled.div`
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("themes"));
 
+  // const [theme, setTheme] = useState(false);
+
   useEffect(() => {
-    localStorage.setItem("themes", theme);
+    // localStorage.getItem("themes");
+    // const setTheme = localStorage.getItem("themes");
+    // setTheme(localStorage.getItem("themes"));
   }, [theme]);
 
   // const useDarkMode = () => {
@@ -64,7 +68,7 @@ function App() {
   // const theme = themeMode === "light" ? light : dark;
 
   return (
-    <ThemeProvider theme={theme === "false" ? lightTheme : darkTheme}>
+    <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
       <GlobalStyles />
       {/* <Reset />
       <Toggle onChange={themeMode} checked={toggleTheme} /> */}

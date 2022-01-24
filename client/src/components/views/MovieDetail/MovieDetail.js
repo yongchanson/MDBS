@@ -23,6 +23,8 @@ const Button = styled.button`
 `;
 
 function MovieDetail(props) {
+  // const [theme, setTheme] = useState(localStorage.getItem("themes"));
+
   let movieId = props.match.params.movieId; //라우터의 movieId을 가져오는 방식
   const [Movie, setMovie] = useState([]);
   const [Casts, setCasts] = useState([]);
@@ -55,6 +57,8 @@ function MovieDetail(props) {
   };
 
   return (
+    // <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
+    //   <GlobalStyles />
     <div>
       {/* Header */}
       {MainMovieImage && (
