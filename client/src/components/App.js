@@ -16,6 +16,12 @@ import { GlobalStyles } from "./globalStyles";
 import { lightTheme, darkTheme } from "./theme";
 import DarkModeToggle from "react-dark-mode-toggle";
 
+import { light, dark } from "./theme";
+// import { useDarkMode } from "./hooks/useDarkMode"
+import { Checkbox } from "antd";
+import Toggle from "./Toggle";
+import { Reset } from "styled-reset";
+
 //null   Anyone Can go inside
 //true   only logged in user can go inside
 //false  logged in user can't go inside
@@ -24,12 +30,8 @@ const Wrapper = styled.div`
   paddingtop: "69px";
   minheight: "calc(100vh - 80px)";
   /* background-color: #fbc531; */
-  /* background: ${({ theme }) => theme.body}; */
+  /* background-color: ${({ theme }) => theme.body}; */
 `;
-
-// const ThemeProvider = styled.div`
-
-// `;
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("themes"));
@@ -38,14 +40,39 @@ function App() {
     localStorage.setItem("themes", theme);
   }, [theme]);
 
+  // const useDarkMode = () => {
+  //   const [theme, setTheme] = useState("light");
+  //   const toggleTheme = () => {
+  //     if (theme === "light") {
+  //       window.localStorage.setItem("theme", "dark");
+  //       setTheme("dark");
+  //     } else {
+  //       window.localStorage.setItem("theme", "light");
+  //       setTheme("light");
+  //     }
+  //   };
+
+  //   useEffect(() => {
+  //     const localTheme = window.localStorage.getItem("theme");
+  //     localTheme && setTheme(localTheme);
+  //   }, []);
+
+  //   return [theme, toggleTheme];
+  // };
+
+  // const [themeMode, toggleTheme] = useDarkMode();
+  // const theme = themeMode === "light" ? light : dark;
+
   return (
-    <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
+    <ThemeProvider theme={theme === "false" ? lightTheme : darkTheme}>
       <GlobalStyles />
+      {/* <Reset />
+      <Toggle onChange={themeMode} checked={toggleTheme} /> */}
       <Suspense fallback={<div>Loading...</div>}>
         <Wrapper>
           {/* <Header> */}
           <NavBar />
-          {/* </Header> */}
+
           <Switch>
             <Route exact path="/" component={Auth(LandingPage, null)} />
             <Route exact path="/login" component={Auth(LoginPage, false)} />
