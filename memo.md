@@ -48,7 +48,7 @@ at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
 - 새고로침 -> 다크모드버튼을 app -> nav로 이동하면서 해결됨
 - 페이지이동시초기화->로컬스토리지에 넣어서 해결할 예정(스토리지에 넣고 값까지 유지시키는건 성공했는데 테마가 적용되지 않음..)->localStorage.getItem("themes")가 string이라서 적용이 안되었음(값이 있으면 항상 ture반환)..조건문을 활용하여 해결해두었음
 - 제목 -> 기존에 <h2>을 <div style={{}}> 으로 변경
-- 헤더의 메뉴부분 적용 -> 메뉴를 styled.a로 감싸서 해결하였다.(div로 감싸면 링크가 적용x)
+- 헤더의 메뉴부분 적용 -> 메뉴를 styled.div와 a로 감싸서 해결하였다.
 - 표안의글씨 등이 바뀌지 않는 부분
 - toggleButton의 styled를 따로 파일을 만들어서 한꺼번에 적용하려고 했으나 실패...임시로 각 파일에 적용시킴(현재 3개사용중) -> toggle버튼에 theme를 실시간으로 보내주지 못함(페이지이동시에는 보내짐)
 

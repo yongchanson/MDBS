@@ -7,7 +7,24 @@ function MovieInfo(props) {
   return (
     <div style={{ width: "85%", margin: "1rem auto" }}>
       <div style={{ fontSize: "2rem", margin: "1rem auto" }}> 영화정보 </div>
-      <Descriptions title="" bordered>
+      <table>
+        <tr>
+          <th>제목</th>
+          <td>{movie.title}</td>
+          <th>개봉일</th>
+          <td>{movie.release_date}</td>
+          <th>런타임</th>
+          <td>{movie.runtime} 분</td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <th>평점</th>
+          <td>{movie.vote_average} / 10</td>
+          <th>상영정보</th>
+          <td colspan="3">{movie.status}</td>
+        </tr>
+      </table>
+      {/* <Descriptions title="" bordered>
         <Descriptions.Item label="제목">{movie.title}</Descriptions.Item>
         <Descriptions.Item label="개봉일">
           {movie.release_date}
@@ -17,10 +34,7 @@ function MovieInfo(props) {
           {movie.vote_average} / 10
         </Descriptions.Item>
         <Descriptions.Item label="상영정보">{movie.status}</Descriptions.Item>
-        {/* <Descriptions.Item label="vote_count">{movie.vote_count}</Descriptions.Item>
-            <Descriptions.Item label="revenue">{movie.revenue}</Descriptions.Item>
-            <Descriptions.Item label="popularity">{movie.popularity}</Descriptions.Item> */}
-      </Descriptions>
+      </Descriptions> */}
     </div>
   );
 }

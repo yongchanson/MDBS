@@ -71,20 +71,24 @@ function FavoritePage() {
   });
 
   return (
-    <div style={{ width: "85%", margin: "3rem auto" }}>
-      <h2> 즐겨찾기에 추가한 목록 </h2>
-      <hr />
+    <div style={{ width: "100%", margin: "0" }}>
+      {/* 이부분이 사라지면 헤더위치가 바뀜 */}
+      <h1>즐겨찾기 페이지</h1>
+      <div style={{ width: "85%", margin: "3rem auto" }}>
+        <h2> 즐겨찾기에 추가한 목록 </h2>
+        <hr />
 
-      <table>
-        <thead>
-          <tr>
-            <th>제목</th>
-            <th>런타임</th>
-            <th>즐겨찾기 삭제</th>
-          </tr>
-        </thead>
-        <tbody>{renderCards}</tbody>
-      </table>
+        <table>
+          <thead>
+            <tr>
+              <th>제목</th>
+              <th>런타임</th>
+              <th>즐겨찾기 삭제</th>
+            </tr>
+          </thead>
+          <tbody>{renderCards}</tbody>
+        </table>
+      </div>
     </div>
   );
 }

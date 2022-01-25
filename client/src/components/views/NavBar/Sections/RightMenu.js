@@ -6,16 +6,7 @@ import { USER_SERVER } from "../../../Config";
 import { withRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import styled from "styled-components";
-
-const Menus = styled.a`
-  background: ${({ theme }) => theme.body};
-  color: ${({ theme }) => theme.text};
-  transition: all 0.5s linear;
-  width: 100%;
-  height: 100%;
-  padding: 10px 20px;
-`;
+import { Menus } from "./LeftMenu";
 
 function RightMenu(props) {
   const user = useSelector((state) => state.user);
@@ -34,12 +25,16 @@ function RightMenu(props) {
     return (
       <Menu mode={props.mode}>
         <Menu.Item key="mail">
-          <Menus href="/login">로그인</Menus>
-          {/* <a href="/login">로그인</a> */}
+          <a style={{ padding: 0 }} href="/login">
+            <Menus>로그인</Menus>
+            {/* <a href="/login">로그인</a> */}
+          </a>
         </Menu.Item>
         <Menu.Item key="app">
-          <Menus href="/register">가입하기</Menus>
-          {/* <a href="/register">가입하기</a> */}
+          <a style={{ padding: 0 }} href="/register">
+            <Menus>가입하기</Menus>
+            {/* <a href="/register">가입하기</a> */}
+          </a>
         </Menu.Item>
       </Menu>
     );
@@ -47,7 +42,9 @@ function RightMenu(props) {
     return (
       <Menu mode={props.mode}>
         <Menu.Item key="logout">
-          <a onClick={logoutHandler}>로그아웃</a>
+          <a style={{ padding: 0 }} onClick={logoutHandler}>
+            <Menus>로그아웃</Menus>
+          </a>
         </Menu.Item>
       </Menu>
     );

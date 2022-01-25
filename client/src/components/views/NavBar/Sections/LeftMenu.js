@@ -6,7 +6,7 @@ import styled from "styled-components";
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
-const Menus = styled.a`
+export const Menus = styled.div`
   background: ${({ theme }) => theme.body};
   color: ${({ theme }) => theme.text};
   transition: all 0.5s linear;
@@ -19,11 +19,14 @@ function LeftMenu(props) {
   return (
     <Menu mode={props.mode}>
       <Menu.Item key="mail">
-        <Menus href="/">홈</Menus>
+        <a style={{ padding: 0 }} href="/">
+          <Menus>홈</Menus>
+        </a>
       </Menu.Item>
       <Menu.Item key="favorite">
-        <Menus href="/favorite">즐겨찾기</Menus>
-        {/* <Link to="/favorite">즐겨찾기</Link> */}
+        <a style={{ padding: 0 }} href="/favorite">
+          <Menus>즐겨찾기</Menus>
+        </a>
       </Menu.Item>
     </Menu>
   );
