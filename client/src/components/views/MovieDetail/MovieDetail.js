@@ -15,17 +15,11 @@ import { lightTheme, darkTheme } from "../../theme";
 // let localValue = localStorage.getItem("themes") === "false" ? false : true;
 // const [theme, setTheme] = useState(localValue);
 
-const Button = styled.button`
-  background: ${({ theme }) => theme.toggleBody};
-  border: 2px solid ${({ theme }) => theme.toggleBorder};
-  color: ${({ theme }) => theme.text};
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  padding: 0.6rem;
-`;
+import { Button } from "../LandingPage/LandingPage";
 
 function MovieDetail(props) {
+  let localValue = localStorage.getItem("themes") === "false" ? false : true;
+
   let movieId = props.match.params.movieId; //라우터의 movieId을 가져오는 방식
   const [Movie, setMovie] = useState([]);
   const [Casts, setCasts] = useState([]);
@@ -95,7 +89,9 @@ function MovieDetail(props) {
             margin: "2rem",
           }}
         >
-          <Button onClick={toggleActorView}> 출연배우 보기 </Button>
+          <Button theme={localValue} onClick={toggleActorView}>
+            출연배우 보기
+          </Button>
         </div>
 
         {ActorToggle && (

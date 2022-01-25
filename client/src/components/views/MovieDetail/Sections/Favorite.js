@@ -3,17 +3,11 @@ import React, { useEffect, useState } from "react";
 // import { Button } from "antd";
 import styled from "styled-components";
 
-const Button = styled.button`
-  background: ${({ theme }) => theme.toggleBody};
-  border: 2px solid ${({ theme }) => theme.toggleBorder};
-  color: ${({ theme }) => theme.text};
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  padding: 0.6rem;
-`;
+import { Button } from "../../LandingPage/LandingPage";
 
 function Favorite(props) {
+  let localValue = localStorage.getItem("themes") === "false" ? false : true;
+
   const movieId = props.movieId;
   const userFrom = props.userFrom;
   const movieTitle = props.movieInfo?.title; //랜더링문제해결
@@ -79,7 +73,7 @@ function Favorite(props) {
 
   return (
     <div>
-      <Button onClick={onClickFavorite}>
+      <Button theme={localValue} onClick={onClickFavorite}>
         {Favorited ? "즐겨찾기 취소 " : "즐겨찾기 추가 "} {FavoriteNumber}{" "}
       </Button>
     </div>

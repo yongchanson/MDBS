@@ -49,11 +49,13 @@ at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
 - 페이지이동시초기화->로컬스토리지에 넣어서 해결할 예정(스토리지에 넣고 값까지 유지시키는건 성공했는데 테마가 적용되지 않음..)->localStorage.getItem("themes")가 string이라서 적용이 안되었음(값이 있으면 항상 ture반환)..조건문을 활용하여 해결해두었음
 - 제목 -> 기존에 <h2>을 <div style={{}}> 으로 변경
 - 헤더의 메뉴부분 적용 -> 메뉴를 styled.div와 a로 감싸서 해결하였다.
-- 표안의글씨 등이 바뀌지 않는 부분
-- toggleButton의 styled를 따로 파일을 만들어서 한꺼번에 적용하려고 했으나 실패...임시로 각 파일에 적용시킴(현재 3개사용중) -> toggle버튼에 theme를 실시간으로 보내주지 못함(페이지이동시에는 보내짐)
+- 표안의글씨 등이 바뀌지 않는 부분 -> antd을 사용하지 않고 표 작성하여 해결
+- toggleButton의 styled를 따로 파일을 만들어서 한꺼번에 적용하려고 했으나 실패...임시로 각 파일에 적용시킴-> export로 보내주는 형식으로 해결
+- toggleButton에 theme를 '실시간'으로 보내주지 못함(페이지이동시에는 보내짐) -> 의도하는 방향은 아니지만 배경색고정, 글자색=보더색으로 구현함
+- 회원강비 텍스트 다크모드 적용하기
 
 ### helmet사용하기
 
-### alt인 경우 이미지크기 다른부분 확인 -> noIMmg.png을 삽입하는 형태로 해결..alt를 텍스트로 추가(넣을까) 고민중
+### alt인 경우 이미지크기 다른부분 확인 -> noIMmg.png을 삽입하는 형태로 해결..alt를 텍스트로 추가 고민중
 
 ### theme, globalStyles 등도 commons로 옮길 것

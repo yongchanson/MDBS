@@ -5,9 +5,11 @@ import GridCards from "../commons/GridCards";
 import { Row } from "antd";
 import noImg from "../commons/noImg.png";
 import styled from "styled-components";
+// import { lightTheme, darkTheme } from "../../theme";
 
-const Button = styled.button`
-  background: ${({ theme }) => theme.toggleBody};
+export const Button = styled.button`
+  /* background: ${({ theme }) => theme.toggleBody}; */
+  background: #3e91f7;
   border: 2px solid ${({ theme }) => theme.toggleBorder};
   color: ${({ theme }) => theme.text};
   border-radius: 30px;
@@ -17,6 +19,8 @@ const Button = styled.button`
 `;
 
 function LandingPage() {
+  let localValue = localStorage.getItem("themes") === "false" ? false : true;
+
   const [Movies, setMovies] = useState([]);
   const [MainMovieImage, setMainMovieImage] = useState(null);
   const [CurrentPage, setCurrentPage] = useState(0);
@@ -85,7 +89,10 @@ function LandingPage() {
       </div>
 
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Button onClick={loadMoreItems}> Load More </Button>
+        {/* <Button theme={theme === localValue} onClick={loadMoreItems}> */}
+        <Button theme={localValue} onClick={loadMoreItems}>
+          Load More
+        </Button>
       </div>
     </div>
   );
