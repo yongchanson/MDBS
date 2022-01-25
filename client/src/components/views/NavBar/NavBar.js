@@ -8,7 +8,8 @@ import styled, { ThemeProvider } from "styled-components";
 import DarkModeToggle from "react-dark-mode-toggle";
 import { GlobalStyles } from "../../globalStyles";
 import { lightTheme, darkTheme } from "../../theme";
-import { useRecoilValue } from "recoil";
+
+import { Link, useRouteMatch } from "react-router-dom";
 
 const Nav = styled.div`
   position: fixed;
@@ -23,9 +24,24 @@ const Nav = styled.div`
 const DarkMode = styled.div`
   position: fixed;
   z-index: 10;
-  right: 50%;
-  top: 10px;
+  right: 3%;
+  bottom: 0;
 `;
+
+// const Menuse = styled.div`
+//   background: ${({ theme }) => theme.body};
+//   transition: all 0.5s linear;
+// `;
+
+// const Button = styled.button`
+//   background: ${({ theme }) => theme.toggleBody};
+//   border: 2px solid ${({ theme }) => theme.toggleBorder};
+//   color: ${({ theme }) => theme.text};
+//   border-radius: 30px;
+//   cursor: pointer;
+//   font-size: 0.8rem;
+//   padding: 0.6rem;
+// `;
 
 function NavBar() {
   // const [theme, setTheme] = useState(false);

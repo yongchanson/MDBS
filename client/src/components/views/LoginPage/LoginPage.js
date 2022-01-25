@@ -87,7 +87,7 @@ function LoginPage(props) {
         } = props;
         return (
           <div className="app">
-            <Title level={2}>로그인</Title>
+            <div style={{ fontSize: "2rem", margin: "1rem auto" }}>로그인</div>
             <form onSubmit={handleSubmit} style={{ width: "350px" }}>
               <Form.Item required>
                 <Input

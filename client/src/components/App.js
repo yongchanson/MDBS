@@ -33,39 +33,21 @@ const Wrapper = styled.div`
   /* background-color: ${({ theme }) => theme.body}; */
 `;
 
-function App() {
-  const [theme, setTheme] = useState(localStorage.getItem("themes"));
+// const DarkMode = styled.div`
+//   position: fixed;
+//   z-index: 10;
+//   right: 50%;
+//   top: 10px;
+// `;
 
+function App() {
+  // const [theme, setTheme] = useState(localStorage.getItem("themes"));
+  let localValue = localStorage.getItem("themes") === "false" ? false : true;
+  const [theme, setTheme] = useState(localValue);
   // const [theme, setTheme] = useState(false);
 
-  useEffect(() => {
-    // localStorage.getItem("themes");
-    // const setTheme = localStorage.getItem("themes");
-    // setTheme(localStorage.getItem("themes"));
-  }, [theme]);
-
-  // const useDarkMode = () => {
-  //   const [theme, setTheme] = useState("light");
-  //   const toggleTheme = () => {
-  //     if (theme === "light") {
-  //       window.localStorage.setItem("theme", "dark");
-  //       setTheme("dark");
-  //     } else {
-  //       window.localStorage.setItem("theme", "light");
-  //       setTheme("light");
-  //     }
-  //   };
-
-  //   useEffect(() => {
-  //     const localTheme = window.localStorage.getItem("theme");
-  //     localTheme && setTheme(localTheme);
-  //   }, []);
-
-  //   return [theme, toggleTheme];
-  // };
-
-  // const [themeMode, toggleTheme] = useDarkMode();
-  // const theme = themeMode === "light" ? light : dark;
+  // useEffect(() => {
+  // }, [theme]);
 
   return (
     <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>

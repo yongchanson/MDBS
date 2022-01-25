@@ -6,6 +6,17 @@ import { USER_SERVER } from "../../../Config";
 import { withRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import styled from "styled-components";
+
+const Menus = styled.a`
+  background: ${({ theme }) => theme.body};
+  color: ${({ theme }) => theme.text};
+  transition: all 0.5s linear;
+  width: 100%;
+  height: 100%;
+  padding: 10px 20px;
+`;
+
 function RightMenu(props) {
   const user = useSelector((state) => state.user);
 
@@ -23,10 +34,12 @@ function RightMenu(props) {
     return (
       <Menu mode={props.mode}>
         <Menu.Item key="mail">
-          <a href="/login">로그인</a>
+          <Menus href="/login">로그인</Menus>
+          {/* <a href="/login">로그인</a> */}
         </Menu.Item>
         <Menu.Item key="app">
-          <a href="/register">가입하기</a>
+          <Menus href="/register">가입하기</Menus>
+          {/* <a href="/register">가입하기</a> */}
         </Menu.Item>
       </Menu>
     );

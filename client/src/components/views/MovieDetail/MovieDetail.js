@@ -12,6 +12,9 @@ import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../../globalStyles";
 import { lightTheme, darkTheme } from "../../theme";
 
+// let localValue = localStorage.getItem("themes") === "false" ? false : true;
+// const [theme, setTheme] = useState(localValue);
+
 const Button = styled.button`
   background: ${({ theme }) => theme.toggleBody};
   border: 2px solid ${({ theme }) => theme.toggleBorder};
@@ -23,8 +26,6 @@ const Button = styled.button`
 `;
 
 function MovieDetail(props) {
-  // const [theme, setTheme] = useState(localStorage.getItem("themes"));
-
   let movieId = props.match.params.movieId; //라우터의 movieId을 가져오는 방식
   const [Movie, setMovie] = useState([]);
   const [Casts, setCasts] = useState([]);
@@ -59,7 +60,9 @@ function MovieDetail(props) {
   return (
     // <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
     //   <GlobalStyles />
+    // <div theme={theme === false ? lightTheme : darkTheme}>
     <div>
+      {/* <GlobalStyles /> */}
       {/* Header */}
       {MainMovieImage && (
         <MainImage

@@ -91,7 +91,9 @@ function RegisterPage(props) {
         } = props;
         return (
           <div className="app">
-            <h2>회원가입</h2>
+            <div style={{ fontSize: "2rem", margin: "1rem auto" }}>
+              회원가입
+            </div>
             <Form
               style={{ minWidth: "375px" }}
               {...formItemLayout}
