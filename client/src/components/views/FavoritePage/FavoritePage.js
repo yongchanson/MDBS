@@ -3,8 +3,11 @@ import "./favorite.css";
 import Axios from "axios";
 import { Popover } from "antd"; //영화제목에 마우스hover를 위한 것
 import { IMAGE_BASE_URL } from "../../Config";
+import { Button } from "../commons/toggleButton";
 
 function FavoritePage() {
+  let localValue = localStorage.getItem("themes") === "false" ? false : true;
+
   const [Favorites, setFavorites] = useState([]);
 
   useEffect(() => {
@@ -60,11 +63,12 @@ function FavoritePage() {
 
         <td>{favorite.movieRunTime} mins</td>
         <td>
-          <button
+          <Button
+            theme={localValue}
             onClick={() => onClickDelete(favorite.movieId, favorite.userFrom)}
           >
             Remove
-          </button>
+          </Button>
         </td>
       </tr>
     );
@@ -75,7 +79,7 @@ function FavoritePage() {
       {/* 이부분이 사라지면 헤더위치가 바뀜 */}
       <h1>즐겨찾기 페이지</h1>
       <div style={{ width: "85%", margin: "3rem auto" }}>
-        <h2> 즐겨찾기에 추가한 목록 </h2>
+        <div style={{ fontSize: "2rem" }}> 즐겨찾기에 추가한 목록 </div>
         <hr />
 
         <table>
@@ -86,6 +90,7 @@ function FavoritePage() {
               <th>즐겨찾기 삭제</th>
             </tr>
           </thead>
+
           <tbody>{renderCards}</tbody>
         </table>
       </div>

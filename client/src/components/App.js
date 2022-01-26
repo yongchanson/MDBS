@@ -12,15 +12,8 @@ import FavoritePage from "./views/FavoritePage/FavoritePage";
 import CastPage from "./views/Cast/CastPage";
 
 import styled, { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "./globalStyles";
-import { lightTheme, darkTheme } from "./theme";
-import DarkModeToggle from "react-dark-mode-toggle";
-
-import { light, dark } from "./theme";
-// import { useDarkMode } from "./hooks/useDarkMode"
-import { Checkbox } from "antd";
-import Toggle from "./Toggle";
-import { Reset } from "styled-reset";
+import { GlobalStyles } from "./views/commons/globalStyles";
+import { lightTheme, darkTheme } from "./views/commons/theme";
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -32,13 +25,6 @@ const Wrapper = styled.div`
   /* background-color: #fbc531; */
   /* background-color: ${({ theme }) => theme.body}; */
 `;
-
-// const DarkMode = styled.div`
-//   position: fixed;
-//   z-index: 10;
-//   right: 50%;
-//   top: 10px;
-// `;
 
 function App() {
   // const [theme, setTheme] = useState(localStorage.getItem("themes"));
@@ -52,8 +38,7 @@ function App() {
   return (
     <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
       <GlobalStyles />
-      {/* <Reset />
-      <Toggle onChange={themeMode} checked={toggleTheme} /> */}
+
       <Suspense fallback={<div>Loading...</div>}>
         <Wrapper>
           {/* <Header> */}

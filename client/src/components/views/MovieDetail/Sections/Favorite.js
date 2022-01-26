@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 // import { Button } from "antd";
 import styled from "styled-components";
 
-import { Button } from "../../LandingPage/LandingPage";
+import { Button } from "../../commons/toggleButton";
 
 function Favorite(props) {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;

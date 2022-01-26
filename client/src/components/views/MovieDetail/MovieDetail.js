@@ -8,14 +8,7 @@ import { Row } from "antd";
 import Favorite from "./Sections/Favorite";
 import noImg from "../commons/noImg.png";
 
-import styled, { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "../../globalStyles";
-import { lightTheme, darkTheme } from "../../theme";
-
-// let localValue = localStorage.getItem("themes") === "false" ? false : true;
-// const [theme, setTheme] = useState(localValue);
-
-import { Button } from "../LandingPage/LandingPage";
+import { Button } from "../commons/toggleButton";
 
 function MovieDetail(props) {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;

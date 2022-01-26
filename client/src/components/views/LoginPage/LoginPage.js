@@ -3,12 +3,15 @@ import { withRouter } from "react-router-dom";
 import { loginUser } from "../../../_actions/user_actions";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Form, Icon, Input, Button, Checkbox, Typography } from "antd";
+import { Form, Icon, Input, Checkbox, Button, Typography } from "antd";
 import { useDispatch } from "react-redux";
+// import { Button } from "../commons/toggleButton";
 
 const { Title } = Typography;
 
 function LoginPage(props) {
+  // let localValue = localStorage.getItem("themes") === "false" ? false : true;
+
   const dispatch = useDispatch();
   const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
 
@@ -156,6 +159,7 @@ function LoginPage(props) {
                   </a> */}
                 <div>
                   <Button
+                    // theme={localValue}
                     type="primary"
                     htmlType="submit"
                     className="login-form-button"

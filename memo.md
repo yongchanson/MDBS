@@ -51,11 +51,15 @@ at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
 - 헤더의 메뉴부분 적용 -> 메뉴를 styled.div와 a로 감싸서 해결하였다.
 - 표안의글씨 등이 바뀌지 않는 부분 -> antd을 사용하지 않고 표 작성하여 해결
 - toggleButton의 styled를 따로 파일을 만들어서 한꺼번에 적용하려고 했으나 실패...임시로 각 파일에 적용시킴-> export로 보내주는 형식으로 해결
-- toggleButton에 theme를 '실시간'으로 보내주지 못함(페이지이동시에는 보내짐) -> 의도하는 방향은 아니지만 배경색고정, 글자색=보더색으로 구현함
+- toggleButton에 theme를 '실시간'으로 보내주지 못함(페이지이동시에는 보내짐) -> 의도하는 방향은 아니지만 배경색고정, 글자색(text)=보더색(border)으로 구현함
 - 회원강비 텍스트 다크모드 적용하기
 
-### helmet사용하기
+### alt인 경우 이미지크기 다른부분 확인 -> noImg.png을 삽입하는 형태로 해결..alt를 텍스트로 추가 고민중 -> noImg을 background으로 보내려다가 실패..
 
-### alt인 경우 이미지크기 다른부분 확인 -> noIMmg.png을 삽입하는 형태로 해결..alt를 텍스트로 추가 고민중
+### theme, globalStyles 등도 commons로 옮길 것 -> 완료
 
-### theme, globalStyles 등도 commons로 옮길 것
+## helmet사용하기
+
+## 로딩문제해결
+
+## 작은화면 오른쪽 사이드메뉴 bgcolor 수정

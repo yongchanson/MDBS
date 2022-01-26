@@ -94,13 +94,15 @@ function RegisterPage(props) {
             <div style={{ fontSize: "2rem", margin: "1rem auto" }}>
               회원가입
             </div>
+
             <Form
               style={{ minWidth: "375px" }}
               {...formItemLayout}
               onSubmit={handleSubmit}
             >
-              <Form.Item required label="이름">
+              <Form.Item required label="">
                 <Input
+                  style={{ width: 400 }}
                   id="name"
                   placeholder="이름을 입력해주세요."
                   type="text"
@@ -113,37 +115,22 @@ function RegisterPage(props) {
                       : "text-input"
                   }
                 />
+
                 {errors.name && touched.name && (
                   <div className="input-feedback">{errors.name}</div>
                 )}
               </Form.Item>
 
-              {/* <Form.Item required label="Last Name">
-                <Input
-                  id="lastName"
-                  placeholder="Enter your Last Name"
-                  type="text"
-                  value={values.lastName}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={
-                    errors.lastName && touched.lastName ? 'text-input error' : 'text-input'
-                  }
-                />
-                {errors.lastName && touched.lastName && (
-                  <div className="input-feedback">{errors.lastName}</div>
-                )}
-              </Form.Item> */}
-
               <Form.Item
                 required
-                label="이메일"
+                label=""
                 hasFeedback
                 validateStatus={
                   errors.email && touched.email ? "error" : "success"
                 }
               >
                 <Input
+                  style={{ width: 400 }}
                   id="email"
                   placeholder="이메일을 입력해주세요."
                   type="email"
@@ -160,16 +147,16 @@ function RegisterPage(props) {
                   <div className="input-feedback">{errors.email}</div>
                 )}
               </Form.Item>
-
               <Form.Item
                 required
-                label="비밀번호"
+                label=""
                 hasFeedback
                 validateStatus={
                   errors.password && touched.password ? "error" : "success"
                 }
               >
                 <Input
+                  style={{ width: 400 }}
                   id="password"
                   placeholder="비밀번호를 입력해주세요."
                   type="password"
@@ -186,16 +173,16 @@ function RegisterPage(props) {
                   <div className="input-feedback">{errors.password}</div>
                 )}
               </Form.Item>
-
               <Form.Item
                 required
-                label="비밀번호 확인"
+                label=""
                 hasFeedback
                 validateStatus={
                   errors.password && touched.password ? "error" : "success"
                 }
               >
                 <Input
+                  style={{ width: 400 }}
                   id="confirmPassword"
                   placeholder="비밀번호를 입력해주세요."
                   type="password"
@@ -212,7 +199,6 @@ function RegisterPage(props) {
                   <div className="input-feedback">{errors.confirmPassword}</div>
                 )}
               </Form.Item>
-
               <Form.Item {...tailFormItemLayout}>
                 <Button
                   onClick={handleSubmit}
