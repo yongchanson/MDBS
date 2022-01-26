@@ -7,6 +7,7 @@ import { Button } from "../../commons/toggleButton";
 
 function Favorite(props) {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
+  const [theme, setTheme] = useState(localValue);
 
   const movieId = props.movieId;
   const userFrom = props.userFrom;
@@ -73,7 +74,7 @@ function Favorite(props) {
 
   return (
     <div>
-      <Button theme={localValue} onClick={onClickFavorite}>
+      <Button theme={theme === localValue} onClick={onClickFavorite}>
         {Favorited ? "즐겨찾기 취소 " : "즐겨찾기 추가 "} {FavoriteNumber}{" "}
       </Button>
     </div>

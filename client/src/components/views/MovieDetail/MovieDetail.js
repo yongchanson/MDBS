@@ -12,6 +12,7 @@ import { Button } from "../commons/toggleButton";
 
 function MovieDetail(props) {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
+  const [theme, setTheme] = useState(localValue);
 
   let movieId = props.match.params.movieId; //라우터의 movieId을 가져오는 방식
   const [Movie, setMovie] = useState([]);
@@ -45,12 +46,7 @@ function MovieDetail(props) {
   };
 
   return (
-    // <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
-    //   <GlobalStyles />
-    // <div theme={theme === false ? lightTheme : darkTheme}>
     <div>
-      {/* <GlobalStyles /> */}
-      {/* Header */}
       {MainMovieImage && (
         <MainImage
           image={`${IMAGE_BASE_URL}w1280${Movie.backdrop_path}`}
@@ -82,7 +78,7 @@ function MovieDetail(props) {
             margin: "2rem",
           }}
         >
-          <Button theme={localValue} onClick={toggleActorView}>
+          <Button theme={theme === localValue} onClick={toggleActorView}>
             출연배우 보기
           </Button>
         </div>

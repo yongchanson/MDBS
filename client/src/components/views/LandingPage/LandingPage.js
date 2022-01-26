@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { API_URL, API_KEY, IMAGE_BASE_URL } from "../../Config";
 import MainImage from "../../views/commons/MainImage";
 import GridCards from "../commons/GridCards";
@@ -7,9 +7,14 @@ import noImg from "../commons/noImg.png";
 // import { lightTheme, darkTheme } from "../../theme";
 
 import { Button } from "../commons/toggleButton";
+import { useQuery } from "react-query";
 
 function LandingPage() {
+  // const { isLoading } = useQuery(["nowPlaying"]);
+  // console.log("a");
+
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
+  const [theme, setTheme] = useState(localValue);
 
   const [Movies, setMovies] = useState([]);
   const [MainMovieImage, setMainMovieImage] = useState(null);
@@ -58,7 +63,6 @@ function LandingPage() {
         <hr />
 
         {/* movie grid cards */}
-
         <Row gutter={[16, 16]}>
           {Movies &&
             Movies.map((movie, index) => (
@@ -80,7 +84,7 @@ function LandingPage() {
 
       <div style={{ display: "flex", justifyContent: "center" }}>
         {/* <Button theme={theme === localValue} onClick={loadMoreItems}> */}
-        <Button theme={localValue} onClick={loadMoreItems}>
+        <Button theme={theme === localValue} onClick={loadMoreItems}>
           Load More
         </Button>
       </div>

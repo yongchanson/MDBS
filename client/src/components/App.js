@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect } from "react";
+import React, { Suspense, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
 // pages for this product
@@ -39,8 +39,8 @@ function App() {
     <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
       <GlobalStyles />
 
-      <Suspense fallback={<div>Loading...</div>}>
-        <Wrapper>
+      <Wrapper>
+        <Suspense fallback={<div>Loading...</div>}>
           {/* <Header> */}
           <NavBar />
 
@@ -69,13 +69,9 @@ function App() {
             />
           </Switch>
 
-          {/* <DarkMode>
-            <DarkModeToggle onChange={setTheme} checked={theme} size={60} />
-          </DarkMode> */}
-
           <Footer />
-        </Wrapper>
-      </Suspense>
+        </Suspense>
+      </Wrapper>
     </ThemeProvider>
   );
 }
