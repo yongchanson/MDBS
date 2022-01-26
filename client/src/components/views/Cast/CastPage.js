@@ -5,9 +5,12 @@ import GridCards from "../commons/GridCards";
 import { Row } from "antd";
 import noImg from "../commons/noImg.png";
 
+import { Helmet } from "react-helmet";
+
 function CastPage(props) {
   const [Casts, setCasts] = useState([]);
   const [Movies, setMovies] = useState([]);
+  const [Birthday, setBirthday] = useState([]);
 
   const castId = props.match.params.castId;
 
@@ -24,8 +27,9 @@ function CastPage(props) {
     fetch(castpoint)
       .then((response) => response.json())
       .then((response) => {
-        // console.log(response)
+        // console.log(response);
         setCasts(response.name);
+        setBirthday(response.birthday);
       });
   };
 
@@ -40,6 +44,9 @@ function CastPage(props) {
 
   return (
     <div style={{ width: "100%", margin: "0" }}>
+      <Helmet>
+        <title>{`${Casts} | ${Birthday === null ? "" : Birthday}`}</title>
+      </Helmet>
       {/* 이부분이 사라지면 헤더위치가 바뀜 */}
       <h1>{Casts}의 정보</h1>
       <div style={{ width: "85%", margin: "3rem auto" }}>

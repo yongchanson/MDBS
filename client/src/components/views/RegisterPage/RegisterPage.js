@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 
 import { Form, Input, Button } from "antd";
 
+import { Helmet } from "react-helmet";
+
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -91,6 +93,9 @@ function RegisterPage(props) {
         } = props;
         return (
           <div className="app">
+            <Helmet>
+              <title>Register | 가입하기</title>
+            </Helmet>
             <div style={{ fontSize: "2rem", margin: "1rem auto" }}>
               회원가입
             </div>

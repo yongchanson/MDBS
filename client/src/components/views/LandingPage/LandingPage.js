@@ -9,6 +9,8 @@ import noImg from "../commons/noImg.png";
 import { Button } from "../commons/toggleButton";
 import { useQuery } from "react-query";
 
+import { Helmet } from "react-helmet";
+
 function LandingPage() {
   // const { isLoading } = useQuery(["nowPlaying"]);
   // console.log("a");
@@ -49,6 +51,9 @@ function LandingPage() {
 
   return (
     <div style={{ width: "100%", margin: "0" }}>
+      <Helmet>
+        <title>Home | 홈</title>
+      </Helmet>
       {/* main페이지 */}
       {MainMovieImage && (
         <MainImage

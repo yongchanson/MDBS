@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { Form, Icon, Input, Checkbox, Button, Typography } from "antd";
 import { useDispatch } from "react-redux";
 // import { Button } from "../commons/toggleButton";
+import { Helmet } from "react-helmet";
 
 const { Title } = Typography;
 
@@ -90,6 +91,9 @@ function LoginPage(props) {
         } = props;
         return (
           <div className="app">
+            <Helmet>
+              <title>Login | 로그인</title>
+            </Helmet>
             <div style={{ fontSize: "2rem", margin: "1rem auto" }}>로그인</div>
             <form onSubmit={handleSubmit} style={{ width: "350px" }}>
               <Form.Item required>
@@ -153,13 +157,8 @@ function LoginPage(props) {
               )}
 
               <Form.Item>
-                {/* <Checkbox id="rememberMe" onChange={handleRememberMe} checked={rememberMe} >Remember me</Checkbox>
-                <a className="login-form-forgot" href="/reset_user" style={{ float: 'right' }}>
-                  forgot password
-                  </a> */}
                 <div>
                   <Button
-                    // theme={localValue}
                     type="primary"
                     htmlType="submit"
                     className="login-form-button"

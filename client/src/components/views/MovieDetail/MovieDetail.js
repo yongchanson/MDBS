@@ -10,6 +10,8 @@ import noImg from "../commons/noImg.png";
 
 import { Button } from "../commons/toggleButton";
 
+import { Helmet } from "react-helmet";
+
 function MovieDetail(props) {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
   const [theme, setTheme] = useState(localValue);
@@ -28,7 +30,7 @@ function MovieDetail(props) {
     fetch(endpointInfo)
       .then((response) => response.json())
       .then((response) => {
-        // console.log(response)
+        // console.log(response);
         setMovie(response);
         setMainMovieImage(response);
       });
@@ -47,6 +49,9 @@ function MovieDetail(props) {
 
   return (
     <div>
+      <Helmet>
+        <title>{`${Movie.original_title} | ${Movie.title}`}</title>
+      </Helmet>
       {MainMovieImage && (
         <MainImage
           image={`${IMAGE_BASE_URL}w1280${Movie.backdrop_path}`}

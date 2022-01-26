@@ -5,7 +5,7 @@ function MovieInfo(props) {
   let { movie } = props;
 
   return (
-    <div style={{ width: "85%", margin: "1rem auto" }}>
+    <div style={{ width: "100%", margin: "1rem auto" }}>
       <div style={{ fontSize: "2rem", margin: "2rem auto" }}> 영화정보 </div>
       <table>
         <thead>
