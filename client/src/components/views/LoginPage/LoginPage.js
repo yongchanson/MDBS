@@ -8,10 +8,18 @@ import { useDispatch } from "react-redux";
 // import { Button } from "../commons/toggleButton";
 import { Helmet } from "react-helmet";
 
+import LoadingPage from "../Loading/LoadingPage";
+
 const { Title } = Typography;
 
 function LoginPage(props) {
-  // let localValue = localStorage.getItem("themes") === "false" ? false : true;
+  const [ready, setReady] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setReady(false);
+    }, 200);
+  }, []);
 
   const dispatch = useDispatch();
   const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
@@ -89,7 +97,10 @@ function LoginPage(props) {
           handleSubmit,
           handleReset,
         } = props;
-        return (
+
+        return ready ? (
+          <LoadingPage />
+        ) : (
           <div className="app">
             <Helmet>
               <title>Login | 로그인</title>

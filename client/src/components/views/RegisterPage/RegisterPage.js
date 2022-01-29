@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 import { Form, Input, Button } from "antd";
 
 import { Helmet } from "react-helmet";
+
+import LoadingPage from "../Loading/LoadingPage";
 
 const formItemLayout = {
   labelCol: {
@@ -33,6 +35,14 @@ const tailFormItemLayout = {
 };
 
 function RegisterPage(props) {
+  const [ready, setReady] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setReady(false);
+    }, 200);
+  }, []);
+
   const dispatch = useDispatch();
   return (
     <Formik
@@ -91,7 +101,9 @@ function RegisterPage(props) {
           handleSubmit,
           handleReset,
         } = props;
-        return (
+        return ready ? (
+          <LoadingPage />
+        ) : (
           <div className="app">
             <Helmet>
               <title>Register | 가입하기</title>

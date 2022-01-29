@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
 // pages for this product
@@ -10,6 +10,7 @@ import Footer from "./views/Footer/Footer";
 import MovieDetail from "./views/MovieDetail/MovieDetail";
 import FavoritePage from "./views/FavoritePage/FavoritePage";
 import CastPage from "./views/Cast/CastPage";
+import LoadingPage from "./views/Loading/LoadingPage";
 
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./views/commons/globalStyles";
@@ -22,18 +23,19 @@ import { lightTheme, darkTheme } from "./views/commons/theme";
 const Wrapper = styled.div`
   paddingtop: "69px";
   minheight: "calc(100vh - 80px)";
-  /* background-color: #fbc531; */
-  /* background-color: ${({ theme }) => theme.body}; */
 `;
 
 function App() {
-  // const [theme, setTheme] = useState(localStorage.getItem("themes"));
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
   const [theme, setTheme] = useState(localValue);
-  // const [theme, setTheme] = useState(false);
+
+  // const [ready, setReady] = useState(true);
 
   // useEffect(() => {
-  // }, [theme]);
+  //   setTimeout(() => {
+  //     setReady(false);
+  //   }, 500);
+  // }, []);
 
   return (
     <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
@@ -67,6 +69,7 @@ function App() {
               path="/favorite"
               component={Auth(FavoritePage, true)}
             />
+            {/* <Route exact path="/loading" component={Auth(LoadingPage, null)} /> */}
           </Switch>
 
           <Footer />

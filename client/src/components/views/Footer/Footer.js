@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Clock from "react-live-clock";
 
 function Footer() {
-  return (
+  const [ready, setReady] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setReady(false);
+    }, 200);
+  }, []);
+
+  return ready ? (
+    <></>
+  ) : (
     <div
       style={{
         height: "80px",

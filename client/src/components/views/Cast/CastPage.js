@@ -7,6 +7,8 @@ import noImg from "../commons/noImg.png";
 
 import { Helmet } from "react-helmet";
 
+import LoadingPage from "../Loading/LoadingPage";
+
 function CastPage(props) {
   const [Casts, setCasts] = useState([]);
   const [Movies, setMovies] = useState([]);
@@ -14,7 +16,13 @@ function CastPage(props) {
 
   const castId = props.match.params.castId;
 
+  const [ready, setReady] = useState(true);
+
   useEffect(() => {
+    setTimeout(() => {
+      setReady(false);
+    }, 200);
+
     //배우에 대한 정보를 얻기 위한 API
     const castpoint = `${API_URL}/person/${castId}?api_key=${API_KEY}`;
     const moviepoint = `${API_URL}/person/${castId}/movie_credits?api_key=${API_KEY}`; //배우가 출연한 영화리스트를 얻기 위한 것
@@ -42,7 +50,9 @@ function CastPage(props) {
       });
   };
 
-  return (
+  return ready ? (
+    <LoadingPage />
+  ) : (
     <div style={{ width: "100%", margin: "0" }}>
       <Helmet>
         <title>{`${Casts} | ${Birthday === null ? "" : Birthday}`}</title>

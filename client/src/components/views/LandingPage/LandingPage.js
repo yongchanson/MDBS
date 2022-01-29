@@ -10,10 +10,17 @@ import { Button } from "../commons/toggleButton";
 import { useQuery } from "react-query";
 
 import { Helmet } from "react-helmet";
+import LoadingPage from "../Loading/LoadingPage";
 
 function LandingPage() {
   // const { isLoading } = useQuery(["nowPlaying"]);
-  // console.log("a");
+  const [ready, setReady] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setReady(false);
+    }, 200);
+  }, []);
 
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
   const [theme, setTheme] = useState(localValue);
@@ -49,7 +56,9 @@ function LandingPage() {
     fetchMovies(endpoint);
   };
 
-  return (
+  return ready ? (
+    <LoadingPage />
+  ) : (
     <div style={{ width: "100%", margin: "0" }}>
       <Helmet>
         <title>Home | 홈</title>

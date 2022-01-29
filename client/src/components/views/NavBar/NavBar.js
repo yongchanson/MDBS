@@ -44,6 +44,14 @@ const DarkMode = styled.div`
 // `;
 
 function NavBar() {
+  const [ready, setReady] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setReady(false);
+    }, 201);
+  }, []);
+
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
   const [theme, setTheme] = useState(localValue);
 
@@ -59,7 +67,9 @@ function NavBar() {
 
   localStorage.setItem("themes", theme); //로컬스토리지에 주는 역할, 위치가 위로 올라가면 토글버튼의 다크모드가 적용x
 
-  return (
+  return ready ? (
+    <></>
+  ) : (
     <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
       <GlobalStyles />
 

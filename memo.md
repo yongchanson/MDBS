@@ -52,14 +52,23 @@ at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
 - 표안의글씨 등이 바뀌지 않는 부분 -> antd을 사용하지 않고 표 작성하여 해결
 - toggleButton의 styled를 따로 파일을 만들어서 한꺼번에 적용하려고 했으나 실패...임시로 각 파일에 적용시킴-> export로 보내주는 형식으로 해결
 - toggleButton에 theme를 '실시간'으로 보내주지 못함(페이지이동시에는 보내짐) -> 의도하는 방향은 아니지만 배경색고정, 글자색(text)=보더색(border)으로 구현함
-- 회원강비 텍스트 다크모드 적용하기
+- 회원가입 텍스트 다크모드 적용하기 -> 일단 삭제해두었음
+- lightTheme 상태로 페이지 이동시 토글키에 테마가 적용x -> `const [theme, setTheme] = useState(localValue);` 코드를 추가하고 <Button>의 조건을 localValue에서 theme = localValue으로 변경하여 해결
 
 ### alt인 경우 이미지크기 다른부분 확인 -> noImg.png을 삽입하는 형태로 해결..alt를 텍스트로 추가 고민중 -> noImg을 background으로 보내려다가 실패..
 
 ### theme, globalStyles 등도 commons로 옮길 것 -> 완료
 
-## helmet사용하기
+## helmet사용하기 -> 완료
 
-## 로딩문제해결
+## 로딩문제해결 -> react-query시도하다가 중단(index.js <QueryClientProvider> 사용).. -> Spinner 사용 -> 완성(로딩시 title이 살짝 움직이는 증상있음)
+
+- error : 'React' must be in scope when using JSX react/react-in-jsx-scope
+  - import React from "react"; 추가
+- error : Attempted import error
+  - export default TodoContext;-> import TodoProviderfrom './TodoContext';
+  - export TodoContext; -> import { TodoProvider } from './TodoContext';
+- 배너메뉴가 로딩시 로그아웃->로그인,가입하기로 변화하는데 이부분은 로딩페이지를 구현하면서 보이지 않도록 하였음(배너의 조건문으로도 해결가능)
+- ready파일을 이용하여 코드반복 줄이기
 
 ## 작은화면 오른쪽 사이드메뉴 bgcolor 수정

@@ -9,8 +9,10 @@ import Favorite from "./Sections/Favorite";
 import noImg from "../commons/noImg.png";
 
 import { Button } from "../commons/toggleButton";
-
 import { Helmet } from "react-helmet";
+
+import LoadingPage from "../Loading/LoadingPage";
+// import { Ready } from "../Loading/Ready";
 
 function MovieDetail(props) {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
@@ -22,7 +24,13 @@ function MovieDetail(props) {
   const [ActorToggle, setActorToggle] = useState(false);
   const [MainMovieImage, setMainMovieImage] = useState(null);
 
+  const [ready, setReady] = useState(true);
+
   useEffect(() => {
+    setTimeout(() => {
+      setReady(false);
+    }, 200);
+
     let endpointCrew = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
 
     let endpointInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;
@@ -47,7 +55,9 @@ function MovieDetail(props) {
     setActorToggle(!ActorToggle);
   };
 
-  return (
+  return ready ? (
+    <LoadingPage />
+  ) : (
     <div>
       <Helmet>
         <title>{`${Movie.original_title} | ${Movie.title}`}</title>
