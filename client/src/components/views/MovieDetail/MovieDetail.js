@@ -7,10 +7,8 @@ import GridCards from "../commons/GridCards";
 import { Row } from "antd";
 import Favorite from "./Sections/Favorite";
 import noImg from "../commons/noImg.png";
-
 import { Button } from "../commons/toggleButton";
 import { Helmet } from "react-helmet";
-
 import LoadingPage from "../Loading/LoadingPage";
 // import { Ready } from "../Loading/Ready";
 

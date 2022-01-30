@@ -5,10 +5,9 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { Form, Icon, Input, Checkbox, Button, Typography } from "antd";
 import { useDispatch } from "react-redux";
-// import { Button } from "../commons/toggleButton";
 import { Helmet } from "react-helmet";
-
 import LoadingPage from "../Loading/LoadingPage";
+// import { Button } from "../commons/toggleButton";
 
 const { Title } = Typography;
 

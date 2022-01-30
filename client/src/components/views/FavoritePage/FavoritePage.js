@@ -5,6 +5,7 @@ import { Popover } from "antd"; //영화제목에 마우스hover를 위한 것
 import { IMAGE_BASE_URL } from "../../Config";
 import { Button } from "../commons/toggleButton";
 import { Helmet } from "react-helmet";
+import LoadingPage from "../Loading/LoadingPage";
 
 function FavoritePage() {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
@@ -12,7 +13,13 @@ function FavoritePage() {
 
   const [Favorites, setFavorites] = useState([]);
 
+  const [ready, setReady] = useState(true);
+
   useEffect(() => {
+    setTimeout(() => {
+      setReady(false);
+    }, 200);
+
     fetchFavoredMovie();
   }, []);
 
@@ -76,7 +83,9 @@ function FavoritePage() {
     );
   });
 
-  return (
+  return ready ? (
+    <LoadingPage />
+  ) : (
     <div style={{ width: "100%", margin: "0" }}>
       {/* 이부분이 사라지면 헤더위치가 바뀜 */}
       <Helmet>

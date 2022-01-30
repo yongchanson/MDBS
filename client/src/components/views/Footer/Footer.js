@@ -7,7 +7,7 @@ function Footer() {
   useEffect(() => {
     setTimeout(() => {
       setReady(false);
-    }, 200);
+    }, 250);
   }, []);
 
   return ready ? (

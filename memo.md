@@ -1,8 +1,8 @@
 ### mainimage : 여러군데 사용... commons로 옮길것 -> 완료
 
-## actorimg, movieimg 크기가 달라지는 부분이 있음 -> alt값 대신 빈이미지가 삽입되도록 수정
+### actorimg, movieimg 크기가 달라지는 부분이 있음 -> alt값 대신 빈이미지가 삽입되도록 수정
 
-## 애니메이션 -> 같은코드인데 작동을 하지 않음(애니메이션 효과만 적용x)
+## 애니메이션 -> 같은코드인데 작동을 하지 않음(애니메이션 효과만 적용x, 이미지부분은 적용O)
 
 ## 로고변경 -> 일단 보류
 
@@ -10,8 +10,7 @@
 
 ### error : Can't import the named export 'Children' from non EcmaScript module (only default export is available)
 
-- import { motion } from 'framer-motion/dist/es/index'
-- 나중에 경로를 기본으로 설정해도 잘 작동됨.. "framer-motion"이 5번대버전->4번대로 다운그레이드하면서 해결된 것으로 추정
+- `import { motion } from 'framer-motion/dist/es/index';` 경로변경 OR "framer-motion" 5번대버전 -> "^4.1.17"으로 다운그레이드
 
 ### error : Uncaught TypeError: undefined is not a function
 
@@ -39,7 +38,7 @@ at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
   )}
 ```
 
-- 위의코드를 추가하여 해결함(원인 : 리렌더링 될때 값이 없어도 css 속성이 렌더링 되버려서 생기는 부분)
+- 위의코드를 추가하여 해결함(원인 : 리렌더링 될때 값이 없어도 css 속성이 렌더링 되어 생기는 부분)
 
 ### antd
 
@@ -55,14 +54,15 @@ at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
 - 회원가입 텍스트 다크모드 적용하기 -> 일단 삭제해두었음
 - lightTheme 상태로 페이지 이동시 토글키에 테마가 적용x -> `const [theme, setTheme] = useState(localValue);` 코드를 추가하고 <Button>의 조건을 localValue에서 theme = localValue으로 변경하여 해결
 
-### alt인 경우 이미지크기 다른부분 확인 -> noImg.png을 삽입하는 형태로 해결..alt를 텍스트로 추가 고민중 -> noImg을 background으로 보내려다가 실패..
+## alt의 경우 이미지크기 다른부분 확인 -> noImg.png을 삽입하는 형태로 해결..alt를 텍스트로 추가 고민중 -> noImg을 background으로 보내려다가 실패..
 
 ### theme, globalStyles 등도 commons로 옮길 것 -> 완료
 
-## helmet사용하기 -> 완료
+### helmet사용하기 -> 완료
 
 ## 로딩문제해결 -> react-query시도하다가 중단(index.js <QueryClientProvider> 사용).. -> Spinner 사용 -> 완성(로딩시 title이 살짝 움직이는 증상있음)
 
+- useEffect를 사용하여 일정시간(200~)이 지나면 페이지가 나오도록 구현 -> useQuery로 바꿀지 고민중(undefined으로 나와서 원인 찾는중...)
 - error : 'React' must be in scope when using JSX react/react-in-jsx-scope
   - import React from "react"; 추가
 - error : Attempted import error

@@ -49,7 +49,7 @@ function NavBar() {
   useEffect(() => {
     setTimeout(() => {
       setReady(false);
-    }, 201);
+    }, 250);
   }, []);
 
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
