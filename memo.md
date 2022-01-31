@@ -62,7 +62,7 @@ at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
 
 ## 로딩문제해결 -> react-query시도하다가 중단(index.js <QueryClientProvider> 사용).. -> Spinner 사용 -> 완성(로딩시 title이 살짝 움직이는 증상있음)
 
-- useEffect를 사용하여 일정시간(200~)이 지나면 페이지가 나오도록 구현 -> useQuery로 바꿀지 고민중(undefined으로 나와서 원인 찾는중...)
+- useEffect를 사용하여 일정시간(200~)이 지나면 페이지가 나오도록 구현 -> useQuery로 바꿀지 고민중(undefined으로 나와서 원인 찾는중...) -> 원인 : 반드시 const { isLoading }이 들어가야 Object에 값이 들어가는 것을 확인하였다. (loading, Loading 등은 불가능) -> 랜딩, 디테일, 캐스트 페이지는 api에서 정보를 불러오면 로딩이 되도록 구현(배너와 푸터는 어떤 정보를 기준으로 로딩할지 고민중...)
 - error : 'React' must be in scope when using JSX react/react-in-jsx-scope
   - import React from "react"; 추가
 - error : Attempted import error

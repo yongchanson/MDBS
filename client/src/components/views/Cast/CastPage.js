@@ -4,10 +4,9 @@ import { API_URL, API_KEY, IMAGE_BASE_URL } from "../../Config";
 import GridCards from "../commons/GridCards";
 import { Row } from "antd";
 import noImg from "../commons/noImg.png";
-
 import { Helmet } from "react-helmet";
-
 import LoadingPage from "../Loading/LoadingPage";
+import { useQuery } from "react-query";
 
 function CastPage(props) {
   const [Casts, setCasts] = useState([]);
@@ -16,12 +15,12 @@ function CastPage(props) {
 
   const castId = props.match.params.castId;
 
-  const [ready, setReady] = useState(true);
+  // const [ready, setReady] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      setReady(false);
-    }, 200);
+    // setTimeout(() => {
+    //   setReady(false);
+    // }, 200);
 
     //배우에 대한 정보를 얻기 위한 API
     const castpoint = `${API_URL}/person/${castId}?api_key=${API_KEY}`;
@@ -50,7 +49,16 @@ function CastPage(props) {
       });
   };
 
-  return ready ? (
+  function getCast() {
+    return fetch(`${API_URL}/person/${castId}?api_key=${API_KEY}`).then(
+      (response) => response.json()
+    );
+  }
+
+  const { data, isLoading } = useQuery(["cast"], getCast);
+  // console.log(data, isLoading);
+
+  return isLoading ? (
     <LoadingPage />
   ) : (
     <div style={{ width: "100%", margin: "0" }}>
@@ -58,7 +66,7 @@ function CastPage(props) {
         <title>{`${Casts} | ${Birthday === null ? "" : Birthday}`}</title>
       </Helmet>
       {/* 이부분이 사라지면 헤더위치가 바뀜 */}
-      <h1>{Casts}의 정보</h1>
+      <h1>{Casts}</h1>
       <div style={{ width: "85%", margin: "3rem auto" }}>
         {/* cast grid cards */}
         <h1>{Casts} 의 출연작품</h1>

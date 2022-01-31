@@ -11,6 +11,7 @@ import { Button } from "../commons/toggleButton";
 import { Helmet } from "react-helmet";
 import LoadingPage from "../Loading/LoadingPage";
 // import { Ready } from "../Loading/Ready";
+import { useQuery } from "react-query";
 
 function MovieDetail(props) {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
@@ -22,12 +23,12 @@ function MovieDetail(props) {
   const [ActorToggle, setActorToggle] = useState(false);
   const [MainMovieImage, setMainMovieImage] = useState(null);
 
-  const [ready, setReady] = useState(true);
+  // const [ready, setReady] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      setReady(false);
-    }, 200);
+    // setTimeout(() => {
+    //   setReady(false);
+    // }, 200);
 
     let endpointCrew = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`;
 
@@ -53,7 +54,16 @@ function MovieDetail(props) {
     setActorToggle(!ActorToggle);
   };
 
-  return ready ? (
+  function getDetail() {
+    return fetch(`${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`).then(
+      (response) => response.json()
+    );
+  }
+
+  const { data, isLoading } = useQuery(["detail"], getDetail);
+  // console.log(data, isLoading);
+
+  return isLoading ? (
     <LoadingPage />
   ) : (
     <div>
