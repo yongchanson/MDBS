@@ -1,15 +1,17 @@
-import React, { Suspense, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import LeftMenu from "./Sections/LeftMenu";
 import RightMenu from "./Sections/RightMenu";
 import { Drawer, Button, Icon } from "antd";
-import "./Sections/Navbar.css";
 import styled, { ThemeProvider } from "styled-components";
 
 import DarkModeToggle from "react-dark-mode-toggle";
 import { GlobalStyles } from "../commons/globalStyles";
 import { lightTheme, darkTheme } from "../commons/theme";
 
-import { Link, useRouteMatch } from "react-router-dom";
+// import { Link, useRouteMatch } from "react-router-dom";
+
+import "./Sections/Navbar.css";
+// import "./Sections/Navbar.scss";
 
 const Nav = styled.div`
   position: fixed;
@@ -17,7 +19,7 @@ const Nav = styled.div`
   width: 100%;
   //이부분이 추가되면서 nav가 다크모드되기시작
   background: ${({ theme }) => theme.body};
-  transition: all 0.5s linear;
+  transition: all 0.3s linear;
   /* color: ${({ theme }) => theme.text}; */
 `;
 
@@ -27,21 +29,6 @@ const DarkMode = styled.div`
   right: 3%;
   bottom: 0;
 `;
-
-// const Menuse = styled.div`
-//   background: ${({ theme }) => theme.body};
-//   transition: all 0.5s linear;
-// `;
-
-// const Button = styled.button`
-//   background: ${({ theme }) => theme.toggleBody};
-//   border: 2px solid ${({ theme }) => theme.toggleBorder};
-//   color: ${({ theme }) => theme.text};
-//   border-radius: 30px;
-//   cursor: pointer;
-//   font-size: 0.8rem;
-//   padding: 0.6rem;
-// `;
 
 function NavBar() {
   const [ready, setReady] = useState(true);
@@ -97,8 +84,9 @@ function NavBar() {
           >
             <Icon type="align-right" />
           </Button>
+
           <Drawer
-            title="메뉴"
+            title=""
             placement="right"
             className="menu_drawer"
             closable={false}
