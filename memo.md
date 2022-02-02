@@ -72,3 +72,6 @@ at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
 - ready파일을 이용하여 코드반복 줄이기
 
 ## 작은화면 오른쪽 사이드메뉴 bgcolor 수정
+
+- NavBar.css의 .ant-drawer-wrapper-body의 background-color를 수정하면 변경이 가능하다.
+- scss 사용하여 조건에 따라 배경색 변경까지는 성공, 하지만 원하는 조건을 받아 색상을 변경하는 것은 실패하였다.
