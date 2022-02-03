@@ -1,4 +1,4 @@
-### 사용 : react, node.js, mongoose, react-redux, antd, react-live-clock, moment , styled-components, globalStyles, react-dark-mode-toggle
+### 사용 : react, node.js, mongoose, react-redux, antd, react-live-clock, moment , styled-components, globalStyles, react-dark-mode-toggle, Spinner
 
 ### 추가 : castPage, footer 실시간 날짜 및 시간, darkMode
 
@@ -9,10 +9,10 @@ client
 ┣ public
 ┃ ┃ ┗ index.html
 ┣ src
-┃ ┣ \_actions
+┃ ┣ _actions
 ┃ ┃ ┣ types.js
 ┃ ┃ ┗ user_actions.js
-┃ ┣ \_reducers
+┃ ┣ _reducers
 ┃ ┃ ┣ index.js
 ┃ ┃ ┗ user_reducer.js
 ┃ ┣ components

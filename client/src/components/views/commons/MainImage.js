@@ -5,7 +5,7 @@ function MainImage(props) {
   return (
     <div
       style={{
-        // top: "30px",
+        top: "50px",
         background: `linear-gradient(to bottom, rgba(0,0,0,0)
         39%,rgba(0,0,0,0)
         41%,rgba(0,0,0,0.65)
@@ -16,6 +16,7 @@ function MainImage(props) {
         backgroundPosition: "center, center",
         width: "100%",
         position: "relative",
+        marginBottom: "100px",
       }}
     >
       <div>
