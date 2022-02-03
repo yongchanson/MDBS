@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-// import Axios from 'axios';
 import { API_URL, API_KEY, IMAGE_BASE_URL } from "../../Config";
 import GridCards from "../commons/GridCards";
 import { Row } from "antd";
-import noImg from "../commons/noImg.png";
+import noImg from "../commons/NoImg.png";
 import { Helmet } from "react-helmet";
 import LoadingPage from "../Loading/LoadingPage";
 import { useQuery } from "react-query";
@@ -14,8 +13,6 @@ function CastPage(props) {
   const [Birthday, setBirthday] = useState([]);
 
   const castId = props.match.params.castId;
-
-  // const [ready, setReady] = useState(true);
 
   useEffect(() => {
     // setTimeout(() => {
@@ -55,7 +52,7 @@ function CastPage(props) {
     );
   }
 
-  const { data, isLoading } = useQuery(["cast"], getCast);
+  const { isLoading } = useQuery(["cast"], getCast);
   // console.log(data, isLoading);
 
   return isLoading ? (

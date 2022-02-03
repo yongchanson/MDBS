@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./favorite.css";
+import "./Favorite.css";
 import Axios from "axios";
 import { Popover } from "antd"; //영화제목에 마우스hover를 위한 것
 import { IMAGE_BASE_URL } from "../../Config";

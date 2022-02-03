@@ -1,8 +1,5 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
-// import { Button } from "antd";
-import styled from "styled-components";
-
 import { Button } from "../../commons/toggleButton";
 
 function Favorite(props) {

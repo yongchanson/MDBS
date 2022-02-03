@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState } from "react";
 import { API_URL, API_KEY, IMAGE_BASE_URL } from "../../Config";
 import MainImage from "../../views/commons/MainImage";
 import GridCards from "../commons/GridCards";
@@ -55,7 +55,7 @@ function LandingPage() {
     );
   }
 
-  const { data, isLoading } = useQuery(["movies"], getMovies);
+  const { isLoading } = useQuery(["movies"], getMovies);
   // console.log(data, isLoading);
 
   const loadMoreItems = () => {

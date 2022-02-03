@@ -1,10 +1,6 @@
 import React from "react";
 import { Menu } from "antd";
-import { Link, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
-
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
 
 export const Menus = styled.div`
   /* background: ${({ theme }) => theme.body};

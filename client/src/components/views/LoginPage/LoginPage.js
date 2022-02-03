@@ -3,13 +3,10 @@ import { withRouter } from "react-router-dom";
 import { loginUser } from "../../../_actions/user_actions";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Form, Icon, Input, Checkbox, Button, Typography } from "antd";
+import { Form, Icon, Input, Button } from "antd";
 import { useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
 import LoadingPage from "../Loading/LoadingPage";
-// import { Button } from "../commons/toggleButton";
-
-const { Title } = Typography;
 
 function LoginPage(props) {
   const [ready, setReady] = useState(true);
@@ -34,10 +31,6 @@ function LoginPage(props) {
   const initialEmail = localStorage.getItem("rememberMe")
     ? localStorage.getItem("rememberMe")
     : "";
-
-  // const [theme, setTheme] = useState(false);
-
-  // localStorage.getItem("themes", JSON.parse(theme));
 
   return (
     <Formik
@@ -89,12 +82,10 @@ function LoginPage(props) {
           values,
           touched,
           errors,
-          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
           handleSubmit,
-          handleReset,
         } = props;
 
         return ready ? (

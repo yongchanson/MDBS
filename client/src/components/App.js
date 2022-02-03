@@ -1,7 +1,7 @@
-import React, { Suspense, useState, useEffect } from "react";
+import React, { Suspense, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
-// pages for this product
+// pages
 import LandingPage from "./views/LandingPage/LandingPage.js";
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
@@ -10,8 +10,7 @@ import Footer from "./views/Footer/Footer";
 import MovieDetail from "./views/MovieDetail/MovieDetail";
 import FavoritePage from "./views/FavoritePage/FavoritePage";
 import CastPage from "./views/Cast/CastPage";
-import LoadingPage from "./views/Loading/LoadingPage";
-
+//styled
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./views/commons/globalStyles";
 import { lightTheme, darkTheme } from "./views/commons/theme";
@@ -28,14 +27,6 @@ const Wrapper = styled.div`
 function App() {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
   const [theme, setTheme] = useState(localValue);
-
-  // const [ready, setReady] = useState(true);
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setReady(false);
-  //   }, 500);
-  // }, []);
 
   return (
     <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
@@ -69,7 +60,6 @@ function App() {
               path="/favorite"
               component={Auth(FavoritePage, true)}
             />
-            {/* <Route exact path="/loading" component={Auth(LoadingPage, null)} /> */}
           </Switch>
 
           <Footer />
