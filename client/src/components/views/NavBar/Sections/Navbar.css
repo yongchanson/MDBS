@@ -15,8 +15,8 @@
 
 .menu__logo a {
   display: inline-block;
-  font-size: 20px;
-  padding: 19px 20px;
+  font-size: 10px;
+  padding: 17.5px 20px;
 }
 
 .menu__container .ant-menu-item {
@@ -88,20 +88,10 @@
 
   .menu__container .ant-menu-item,
   .menu__container .ant-menu-submenu-title {
-    padding: 1px 20px;
+    padding: 0px 20px;
   }
 
   .menu__logo a {
     padding: 10px 20px;
   }
 }
-
-/* body.light-mode {
-  background-color: #fff;
-  color: #333;
-  transition: background-color 0.3s ease;
-}
-body.dark-mode {
-  background-color: #1a1919;
-  color: #999;
-} */

@@ -1,20 +1,16 @@
-### mainimage : 여러군데 사용... commons로 옮길것 -> 완료
+### Mainimage.js : 여러군데 사용... commons로 옮길것 -> 완료
 
 ### actorimg, movieimg 크기가 달라지는 부분이 있음 -> alt값 대신 빈이미지가 삽입되도록 수정
 
 ## 애니메이션 -> 같은코드인데 작동을 하지 않음(애니메이션 효과만 적용x, 이미지부분은 적용O)
 
-## 로고변경 -> 일단 보류
-
 ### 푸터실시간 변경(+format까지) -> react-live-clock을 사용(moment-timezone도 같이 설치해야 작동함)
 
 ### error : Can't import the named export 'Children' from non EcmaScript module (only default export is available)
 
-- `import { motion } from 'framer-motion/dist/es/index';` 경로변경 OR "framer-motion" 5번대버전 -> "^4.1.17"으로 다운그레이드
+- `import { motion } from 'framer-motion/dist/es/index';` 으로 경로변경 OR "framer-motion" 5번대버전 -> "^4.1.17"으로 다운그레이드
 
-### error : Uncaught TypeError: undefined is not a function
-
-at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
+### error : Uncaught TypeError: undefined is not a function at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
 
 - "framer-motion": "^4.1.17" 으로 다운그레이드 후 해결
 
@@ -38,27 +34,49 @@ at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
   )}
 ```
 
-- 위의코드를 추가하여 해결함(원인 : 리렌더링 될때 값이 없어도 css 속성이 렌더링 되어 생기는 부분)
+위의코드를 추가하여 해결함(원인 : 리렌더링 될때 값이 없어도 css 속성이 렌더링 되어 생기는 부분)
 
-### antd
+### error : Manifest: Line: 1, column: 1, Syntax error.
 
-### react 애니메이션 다크모드 : 문제점(새로고침을 제외하고 원인은 antd와 관련있어 보인다.)
+- client-public-index.html의 `<link rel="manifest" href="%PUBLIC_URL%/manifest.json" />`을 주석처리하니 사라졌다. (정확한 원인은 모르겠으나 파일이름을 변경하면서 생긴 것 같다.)
 
-- 새고로침 -> 다크모드버튼을 app -> nav로 이동하면서 해결됨
-- 페이지이동시초기화->로컬스토리지에 넣어서 해결할 예정(스토리지에 넣고 값까지 유지시키는건 성공했는데 테마가 적용되지 않음..)->localStorage.getItem("themes")가 string이라서 적용이 안되었음(값이 있으면 항상 ture반환)..조건문을 활용하여 해결해두었음
-- 제목 -> 기존에 <h2>을 <div style={{}}> 으로 변경
-- 헤더의 메뉴부분 적용 -> 메뉴를 styled.div와 a로 감싸서 해결하였다.
-- 표안의글씨 등이 바뀌지 않는 부분 -> antd을 사용하지 않고 표 작성하여 해결
-- toggleButton의 styled를 따로 파일을 만들어서 한꺼번에 적용하려고 했으나 실패...임시로 각 파일에 적용시킴-> export로 보내주는 형식으로 해결
-- toggleButton에 theme를 '실시간'으로 보내주지 못함(페이지이동시에는 보내짐) -> 의도하는 방향은 아니지만 배경색고정, 글자색(text)=보더색(border)으로 구현함
-- 회원가입 텍스트 다크모드 적용하기 -> 일단 삭제해두었음
-- lightTheme 상태로 페이지 이동시 토글키에 테마가 적용x -> `const [theme, setTheme] = useState(localValue);` 코드를 추가하고 <Button>의 조건을 localValue에서 theme = localValue으로 변경하여 해결
+### react 라이트모드/다크모드(테마변경)
 
-## alt의 경우 이미지크기 다른부분 확인 -> noImg.png을 삽입하는 형태로 해결..alt를 텍스트로 추가 고민중 -> noImg을 background으로 보내려다가 실패..
+- 테마변경 시 새고로침이 되는 현상 -> 테마변경 버튼을 APP.js -> NavBar.js로 이동하면서 해결됨
+- 페이지이동시 테마초기화 -> 로컬스토리지에 넣어서 해결할 예정(스토리지에 넣고 값까지 유지시키는건 성공했는데 테마가 적용되지 않음..) -> 원인은 localStorage.getItem("themes")가 string이여서 : 조건문을 사용하여 해결함 `localStorage.getItem("themes") === "false" ? false : true;`
+  (처음에 Boolean으로 type을 변경하였더니 값이 있으면 항상 ture을 반환하여 조건문을 사용함)
+- 제목부분 테마변경X -> 기존 제목은 `<h2>`을 사용하였고 `<div style={{}}>`으로 변경하여 테마변경
+- 헤더의 메뉴(홈, 즐겨찾기...) 바깥 테두리부분 테마변경X -> 메뉴를 <a>와 styled.div로 감싸서 해결함
 
-### theme, globalStyles 등도 commons로 옮길 것 -> 완료
+```javascript
+<a href="/">
+  <Menus>홈</Menus>
+</a>
+```
 
-### helmet사용하기 -> 완료
+```javascript
+export const Menus = styled.div`
+  transition: all 0.3s linear;
+  padding: 0px 20px;
+`;
+```
+
+- ToggleButton의 테마가 변경되지 않음(페이지 이동시 가지고 있는 테마를 그대로 유지함)
+- 라이트모드 상태로 페이지 이동시 ToggleButton에 테마가 적용x(반대상황은 적용)
+- 작은화면일시 생성되는 오른쪽 사이드메뉴(Drawer) 테마변경 되도록 변경
+  - antd에서 지원하는 dark/light mode를 이용하였음(원래는 기존의 App.js, NavBar.js처럼 Theme.js을 이용하려 했으나, 메뉴 바깥부분의 여백이 생기는 등의 좋지못한 결과가 있었음)
+- 작은화면일시 생성되는 오른쪽 사이드메뉴(Drawer) 아래 background-color 수정
+  - NavBar.css의 .ant-drawer-wrapper-body의 background-color를 수정하면 변경이 가능하다.
+  - scss 사용하여 조건에 따라 배경색 변경까지는 성공, 하지만 원하는 조건을 받아 색상을 변경하는 것은 실패하였다. 색상을 transport -> #3e91f7 으로 변경
+
+```javascript
+1. 코드를 추가 : const [theme, setTheme] = useState(localValue);
+2. ToggleButton 조건을 변경 : theme={localValue} -> theme={theme === localValue}
+```
+
+### Theme.js, GlobalStyles은 여러곳에서 사용하므로 commons로 옮길 것 -> 완료
+
+## helmet사용하여 title변경 -> 완료 / 추가로 이미지도 삽입할 예정
 
 ## 로딩문제해결 -> react-query시도하다가 중단(index.js <QueryClientProvider> 사용).. -> Spinner 사용 -> 완성(로딩시 title이 살짝 움직이는 증상있음)
 
@@ -68,10 +86,12 @@ at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
 - error : Attempted import error
   - export default TodoContext;-> import TodoProviderfrom './TodoContext';
   - export TodoContext; -> import { TodoProvider } from './TodoContext';
-- 배너메뉴가 로딩시 로그아웃->로그인,가입하기로 변화하는데 이부분은 로딩페이지를 구현하면서 보이지 않도록 하였음(배너의 조건문으로도 해결가능)
-- ready파일을 이용하여 코드반복 줄이기
+- NavBar메뉴가 로딩시 로그아웃->로그인,가입하기로 변화하는데 이부분은 로딩페이지를 구현하면서 2초 후 나오도록 하였음(배너의 조건문으로 순서는 변경가능할 듯...ex)로그인->로그아웃)
 
-## 작은화면 오른쪽 사이드메뉴 bgcolor 수정
+### NavBar 로고 및 애니메이션효과 추가 : png파일을 svg파일로 변환(https://convertio.co/kr/) 후 "framer-motion"을 사용하여 애니메이션효과 추가
 
-- NavBar.css의 .ant-drawer-wrapper-body의 background-color를 수정하면 변경이 가능하다.
-- scss 사용하여 조건에 따라 배경색 변경까지는 성공, 하지만 원하는 조건을 받아 색상을 변경하는 것은 실패하였다.
+### favicon 이미지 변경 : React-Helmet을 사용하여 변경
+
+## api에서 이미지가 없어서 불러오지 못하는 경우를 대비해 alt를 넣어두었음 -> alt의 크기가 다른 부분이 존재(정상적으로 불러온 이미지와 같은 크기도 있지만, 아닌 경우도 있음) -> 이미자가 없으면 noImg.png을 삽입하는 형태로 해결..삽입 후 위에 텍스트로 추가 고민중... -> noImg.png을 background으로 보내려다가 실패..
+
+- 회원가입 텍스트 다크모드 적용하기 -> 일단 삭제해두었음

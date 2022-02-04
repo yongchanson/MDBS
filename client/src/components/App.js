@@ -12,12 +12,11 @@ import FavoritePage from "./views/FavoritePage/FavoritePage";
 import CastPage from "./views/Cast/CastPage";
 //styled
 import styled, { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "./views/commons/globalStyles";
-import { lightTheme, darkTheme } from "./views/commons/theme";
+import { GlobalStyles } from "./views/commons/GlobalStyles";
+import { lightTheme, darkTheme } from "./views/commons/Theme";
 
-//null   Anyone Can go inside
-//true   only logged in user can go inside
-//false  logged in user can't go inside
+import { Helmet } from "react-helmet";
+import Logo from "./views/commons/MDBS_LOGO.png";
 
 const Wrapper = styled.div`
   paddingtop: "69px";
@@ -30,6 +29,9 @@ function App() {
 
   return (
     <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
+      <Helmet>
+        <link href={Logo} />
+      </Helmet>
       <GlobalStyles />
 
       <Wrapper>

@@ -94,7 +94,7 @@ function MovieDetail(props) {
           }}
         >
           <Button theme={theme === localValue} onClick={toggleActorView}>
-            출연배우 보기
+            출연배우
           </Button>
         </div>
 

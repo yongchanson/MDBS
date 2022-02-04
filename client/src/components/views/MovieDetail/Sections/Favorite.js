@@ -1,6 +1,6 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button } from "../../commons/toggleButton";
+import { Button } from "../../commons/ToggleButton";
 
 function Favorite(props) {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;

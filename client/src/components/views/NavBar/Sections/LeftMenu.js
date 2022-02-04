@@ -3,12 +3,7 @@ import { Menu } from "antd";
 import styled from "styled-components";
 
 export const Menus = styled.div`
-  /* background: ${({ theme }) => theme.body};
-  color: ${({ theme }) => theme.text}; */
   transition: all 0.3s linear;
-  /* width: 100%;
-  height: 100%;
-  padding: 10px 20px; */
   padding: 0px 20px;
 `;
 
