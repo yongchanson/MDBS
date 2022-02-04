@@ -1,20 +1,14 @@
-### Mainimage.js : 여러군데 사용... commons로 옮길것 -> 완료
+### 푸터실시간 시간변경 -> react-live-clock 사용(moment-timezone도 같이 설치해야 작동함)
 
-### actorimg, movieimg 크기가 달라지는 부분이 있음 -> alt값 대신 빈이미지가 삽입되도록 수정
-
-## 애니메이션 -> 같은코드인데 작동을 하지 않음(애니메이션 효과만 적용x, 이미지부분은 적용O)
-
-### 푸터실시간 변경(+format까지) -> react-live-clock을 사용(moment-timezone도 같이 설치해야 작동함)
-
-### error : Can't import the named export 'Children' from non EcmaScript module (only default export is available)
+### ERROR : Can't import the named export 'Children' from non EcmaScript module (only default export is available)
 
 - `import { motion } from 'framer-motion/dist/es/index';` 으로 경로변경 OR "framer-motion" 5번대버전 -> "^4.1.17"으로 다운그레이드
 
-### error : Uncaught TypeError: undefined is not a function at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
+### ERROR : Uncaught TypeError: undefined is not a function at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
 
 - "framer-motion": "^4.1.17" 으로 다운그레이드 후 해결
 
-### error : MovieDetail에서 Warning: Updating a style property during rerender (background) when a conflicting property is set (backgroundPosition) can lead to styling bugs. To avoid this, don't mix shorthand and non-shorthand properties for the same value; instead, replace the shorthand with separate values.
+### ERROR : MovieDetail에서 Warning: Updating a style property during rerender (background) when a conflicting property is set (backgroundPosition) can lead to styling bugs. To avoid this, don't mix shorthand and non-shorthand properties for the same value; instead, replace the shorthand with separate values.
 
 ```script
   1. const [MainMovieImage, setMainMovieImage] = useState(null);
@@ -36,7 +30,7 @@
 
 위의코드를 추가하여 해결함(원인 : 리렌더링 될때 값이 없어도 css 속성이 렌더링 되어 생기는 부분)
 
-### error : Manifest: Line: 1, column: 1, Syntax error.
+### ERROR : Manifest: Line: 1, column: 1, Syntax error.
 
 - client-public-index.html의 `<link rel="manifest" href="%PUBLIC_URL%/manifest.json" />`을 주석처리하니 사라졌다. (정확한 원인은 모르겠으나 파일이름을 변경하면서 생긴 것 같다.)
 
@@ -70,15 +64,15 @@ export const Menus = styled.div`
   - scss 사용하여 조건에 따라 배경색 변경까지는 성공, 하지만 원하는 조건을 받아 색상을 변경하는 것은 실패하였다. 색상을 transport -> #3e91f7 으로 변경
 
 ```javascript
-1. 코드를 추가 : const [theme, setTheme] = useState(localValue);
-2. ToggleButton 조건을 변경 : theme={localValue} -> theme={theme === localValue}
+1. 코드추가 : const [theme, setTheme] = useState(localValue);
+2. ToggleButton 조건변경 : theme={localValue} -> theme={theme === localValue}
 ```
 
-### Theme.js, GlobalStyles은 여러곳에서 사용하므로 commons로 옮길 것 -> 완료
+### title / favicon 이미지 변경 -> React-Helmet을 사용하여 변경
 
-## helmet사용하여 title변경 -> 완료 / 추가로 이미지도 삽입할 예정
+### NavBar 로고 및 애니메이션효과 추가 : png파일을 svg파일로 변환(https://convertio.co/kr/) 후 "framer-motion"을 사용하여 애니메이션효과 추가
 
-## 로딩문제해결 -> react-query시도하다가 중단(index.js <QueryClientProvider> 사용).. -> Spinner 사용 -> 완성(로딩시 title이 살짝 움직이는 증상있음)
+## 로딩문제 -> react-query시도하다가 중단(index.js <QueryClientProvider> 사용).. -> Spinner 사용 -> 완성(로딩시 title이 살짝 움직이는 증상있음)
 
 - useEffect를 사용하여 일정시간(200~)이 지나면 페이지가 나오도록 구현(디자인은 Spinner사용) -> useQuery로 바꿀지 고민중(undefined으로 나와서 원인 찾는중...) -> 원인 : 반드시 const { isLoading }이 들어가야 Object에 값이 들어가는 것을 확인하였다. (loading, Loading 등은 불가능) -> 랜딩, 디테일, 캐스트 페이지는 api에서 정보를 불러오면 로딩이 되도록 구현(배너와 푸터는 어떤 정보를 기준으로 로딩할지 고민중...)
 - error : 'React' must be in scope when using JSX react/react-in-jsx-scope
@@ -87,10 +81,6 @@ export const Menus = styled.div`
   - export default TodoContext;-> import TodoProviderfrom './TodoContext';
   - export TodoContext; -> import { TodoProvider } from './TodoContext';
 - NavBar메뉴가 로딩시 로그아웃->로그인,가입하기로 변화하는데 이부분은 로딩페이지를 구현하면서 2초 후 나오도록 하였음(배너의 조건문으로 순서는 변경가능할 듯...ex)로그인->로그아웃)
-
-### NavBar 로고 및 애니메이션효과 추가 : png파일을 svg파일로 변환(https://convertio.co/kr/) 후 "framer-motion"을 사용하여 애니메이션효과 추가
-
-### favicon 이미지 변경 : React-Helmet을 사용하여 변경
 
 ## api에서 이미지가 없어서 불러오지 못하는 경우를 대비해 alt를 넣어두었음 -> alt의 크기가 다른 부분이 존재(정상적으로 불러온 이미지와 같은 크기도 있지만, 아닌 경우도 있음) -> 이미자가 없으면 noImg.png을 삽입하는 형태로 해결..삽입 후 위에 텍스트로 추가 고민중... -> noImg.png을 background으로 보내려다가 실패..
 
