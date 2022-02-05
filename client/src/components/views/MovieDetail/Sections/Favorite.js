@@ -4,7 +4,7 @@ import { Button } from "../../commons/ToggleButton";
 
 function Favorite(props) {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
-  const [theme, setTheme] = useState(localValue);
+  const [theme] = useState(localValue);
 
   const movieId = props.movieId;
   const userFrom = props.userFrom;
@@ -12,6 +12,7 @@ function Favorite(props) {
   const moviePost = props.movieInfo?.backdrop_path;
   const movieRunTime = props.movieInfo?.runtime;
 
+  //FavoriteNumber : 즐겨찾기한 게정의 수
   const [FavoriteNumber, setFavoriteNumber] = useState(0);
   const [Favorited, setFavorited] = useState(false);
 
@@ -72,7 +73,7 @@ function Favorite(props) {
   return (
     <div>
       <Button theme={theme === localValue} onClick={onClickFavorite}>
-        {Favorited ? "즐겨찾기 취소 " : "즐겨찾기 추가 "} {FavoriteNumber}{" "}
+        {Favorited ? "즐겨찾기 취소 " : "즐겨찾기 추가 "} {FavoriteNumber}
       </Button>
     </div>
   );

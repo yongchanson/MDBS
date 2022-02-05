@@ -25,7 +25,7 @@ const Wrapper = styled.div`
 
 function App() {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
-  const [theme, setTheme] = useState(localValue);
+  const [theme] = useState(localValue);
 
   return (
     <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>

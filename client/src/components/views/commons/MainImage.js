@@ -1,6 +1,6 @@
 import React from "react";
 
-//home, movieDetail 페이지 상단의 큰 이미지를 나타내기 위한 것
+//LandingPage.js, movieDetail.js 페이지 상단의 큰 이미지를 나타내기 위한 것
 function MainImage(props) {
   return (
     <div

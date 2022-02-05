@@ -20,7 +20,6 @@ function RightMenu(props) {
     });
   };
 
-  // const [ theme, setTheme ] = useState('light');
   let menuTheme = localStorage.getItem("themes") === "false" ? "light" : "dark";
 
   if (user.userData && !user.userData.isAuth) {

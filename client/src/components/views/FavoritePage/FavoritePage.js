@@ -9,7 +9,7 @@ import LoadingPage from "../Loading/LoadingPage";
 
 function FavoritePage() {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
-  const [theme, setTheme] = useState(localValue);
+  const [theme] = useState(localValue);
 
   const [Favorites, setFavorites] = useState([]);
 
@@ -65,21 +65,24 @@ function FavoritePage() {
     );
 
     return (
-      <tr key={index}>
-        <Popover content={content} title={`${favorite.movieTitle}`}>
-          <td>{favorite.movieTitle}</td>
-        </Popover>
+      <>
+        <tr key={index}>
+          <Popover content={content} title={`${favorite.movieTitle}`}>
+            <td>{favorite.movieTitle}</td>
+          </Popover>
 
-        <td>{favorite.movieRunTime} mins</td>
-        <td>
-          <Button
-            theme={theme === localValue}
-            onClick={() => onClickDelete(favorite.movieId, favorite.userFrom)}
-          >
-            Remove
-          </Button>
-        </td>
-      </tr>
+          <td>{favorite.movieRunTime} mins</td>
+          <td>
+            <Button
+              theme={theme === localValue}
+              onClick={() => onClickDelete(favorite.movieId, favorite.userFrom)}
+            >
+              삭제하기
+            </Button>
+          </td>
+        </tr>
+        <tr></tr>
+      </>
     );
   });
 
@@ -87,15 +90,15 @@ function FavoritePage() {
     <LoadingPage />
   ) : (
     <div style={{ width: "100%", margin: "0" }}>
-      {/* 이부분이 사라지면 헤더위치가 바뀜 */}
       <Helmet>
         <title>Favorite | 즐겨찾기</title>
       </Helmet>
-      <h1>즐겨찾기 페이지</h1>
-      <div style={{ width: "85%", margin: "3rem auto" }}>
+      {/* 이부분이 사라지면 헤더위치가 바뀜 */}
+      <div style={{ fontSize: "0" }}>즐겨찾기</div>
+      <div style={{ width: "85%", margin: "8rem auto" }}>
         <div style={{ fontSize: "2rem" }}> 즐겨찾기에 추가한 목록 </div>
         <hr />
-
+        <br />
         <table>
           <thead>
             <tr>
@@ -104,7 +107,6 @@ function FavoritePage() {
               <th>즐겨찾기 삭제</th>
             </tr>
           </thead>
-
           <tbody>{renderCards}</tbody>
         </table>
       </div>

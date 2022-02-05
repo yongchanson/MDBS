@@ -15,10 +15,6 @@ function CastPage(props) {
   const castId = props.match.params.castId;
 
   useEffect(() => {
-    // setTimeout(() => {
-    //   setReady(false);
-    // }, 200);
-
     //배우에 대한 정보를 얻기 위한 API
     const castpoint = `${API_URL}/person/${castId}?api_key=${API_KEY}`;
     const moviepoint = `${API_URL}/person/${castId}/movie_credits?api_key=${API_KEY}`; //배우가 출연한 영화리스트를 얻기 위한 것
@@ -63,10 +59,12 @@ function CastPage(props) {
         <title>{`${Casts} | ${Birthday === null ? "" : Birthday}`}</title>
       </Helmet>
       {/* 이부분이 사라지면 헤더위치가 바뀜 */}
-      <h1>{Casts}</h1>
-      <div style={{ width: "85%", margin: "3rem auto" }}>
+      <div style={{ fontSize: "0" }}>{Casts}</div>
+      <div style={{ width: "85%", margin: "6rem auto" }}>
         {/* cast grid cards */}
-        <h1>{Casts} 의 출연작품</h1>
+        <div style={{ fontSize: "2rem", margin: "4rem auto" }}>
+          {Casts} 의 출연작품
+        </div>
         <Row gutter={[16, 16]}>
           {Movies &&
             Movies.map((movie, index) => (

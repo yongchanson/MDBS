@@ -36,7 +36,6 @@ client
 ┃ ┃ ┃ ┃ ┗ LandingPage.js
 ┃ ┃ ┃ ┣ Loading
 ┃ ┃ ┃ ┃ ┣ LoadingPage.js
-┃ ┃ ┃ ┃ ┣ Ready.js
 ┃ ┃ ┃ ┃ ┗ Spinner.js
 ┃ ┃ ┃ ┣ LoginPage
 ┃ ┃ ┃ ┃ ┗ LoginPage.js

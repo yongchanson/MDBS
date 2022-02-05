@@ -66,7 +66,7 @@ function NavBar() {
     active: {
       fillOpacity: [0, 1, 0],
       transition: {
-        repeat: Infinity, //무한반복
+        repeat: Infinity,
       },
     },
   };

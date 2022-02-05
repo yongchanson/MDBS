@@ -70,9 +70,20 @@ export const Menus = styled.div`
 
 ### title / favicon 이미지 변경 -> React-Helmet을 사용하여 변경
 
-### NavBar 로고 및 애니메이션효과 추가 : png파일을 svg파일로 변환(https://convertio.co/kr/) 후 "framer-motion"을 사용하여 애니메이션효과 추가
+### 같은계정에서 같은영화를 여러번 즐겨찾기에 추가할 수 있는 현상 발견 -> 즐겨찾기 추가버튼(ToggleButton)이 클릭되거나, 테마변경하면서 생기는 것으로 추정되어 다음과 같이 코드를 수정하였다.(기존에 theme를 사용하고 있지 않았기에 변화는 없음)
 
-## 로딩문제 -> react-query시도하다가 중단(index.js <QueryClientProvider> 사용).. -> Spinner 사용 -> 완성(로딩시 title이 살짝 움직이는 증상있음)
+```javascript
+export const Button = styled.button`
+  border: 2px solid ${({ theme }) => theme.toggleBorder};
+`;
+export const Button = styled.button`
+  border: 2px solid;
+`;
+```
+
+### NavBar 로고 및 애니메이션효과 추가 : png파일을 svg파일로 변환(https://convertio.co/kr/) 후 "framer-motion"을 사용하여 애니메이션효과 추가(페이지로딩, 테마변경, 마우스hover의 조건 시 애니메이션효과)
+
+## 로딩문제(NavBar, Footer는 로딩속도 > api를 통해 불러오는 이미지, 글의 로딩속도) -> react-query시도했는데 큰 변화가 안보임(index.js 파일에 <QueryClientProvider> 사용) -> LoadingPage만들어서 페이지가 로딩되기 이전에 보여주도록 구현(로딩시 영화title이 살짝 움직이는 증상있음)
 
 - useEffect를 사용하여 일정시간(200~)이 지나면 페이지가 나오도록 구현(디자인은 Spinner사용) -> useQuery로 바꿀지 고민중(undefined으로 나와서 원인 찾는중...) -> 원인 : 반드시 const { isLoading }이 들어가야 Object에 값이 들어가는 것을 확인하였다. (loading, Loading 등은 불가능) -> 랜딩, 디테일, 캐스트 페이지는 api에서 정보를 불러오면 로딩이 되도록 구현(배너와 푸터는 어떤 정보를 기준으로 로딩할지 고민중...)
 - error : 'React' must be in scope when using JSX react/react-in-jsx-scope

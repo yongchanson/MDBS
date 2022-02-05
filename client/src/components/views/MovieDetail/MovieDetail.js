@@ -13,7 +13,7 @@ import { useQuery } from "react-query";
 
 function MovieDetail(props) {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
-  const [theme, setTheme] = useState(localValue);
+  const [theme] = useState(localValue);
 
   let movieId = props.match.params.movieId; //라우터의 movieId을 가져오는 방식
   const [Movie, setMovie] = useState([]);
