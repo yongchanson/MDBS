@@ -23,6 +23,7 @@ client
 ┃ ┃ ┃ ┃ ┣ GlobalStyles.js
 ┃ ┃ ┃ ┃ ┣ GridCards.js
 ┃ ┃ ┃ ┃ ┣ MainImage.js
+┃ ┃ ┃ ┃ ┣ MDBS_LOGO.png
 ┃ ┃ ┃ ┃ ┣ NoImg.png
 ┃ ┃ ┃ ┃ ┣ Theme.js
 ┃ ┃ ┃ ┃ ┗ ToggleButton.js
