@@ -63,7 +63,6 @@ function App() {
               component={Auth(FavoritePage, true)}
             />
           </Switch>
-
           <Footer />
         </Suspense>
       </Wrapper>
