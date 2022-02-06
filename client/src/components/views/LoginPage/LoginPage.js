@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { loginUser } from "../../../_actions/user_actions";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Form, Icon, Input, Button } from "antd";
+import { Form, Icon, Input, Button, Checkbox } from "antd";
 import { useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
 import LoadingPage from "../Loading/LoadingPage";
@@ -23,10 +23,9 @@ function LoginPage(props) {
   const [formErrorMessage, setFormErrorMessage] = useState("");
   const [rememberMe, setRememberMe] = useState(rememberMeChecked);
 
-  //아이디정보를 기억하는 것(under..)
-  // const handleRememberMe = () => {
-  //   setRememberMe(!rememberMe)
-  // };
+  const handleRememberMe = () => {
+    setRememberMe(!rememberMe);
+  };
 
   const initialEmail = localStorage.getItem("rememberMe")
     ? localStorage.getItem("rememberMe")
@@ -58,7 +57,7 @@ function LoginPage(props) {
               if (response.payload.loginSuccess) {
                 window.localStorage.setItem("userId", response.payload.userId);
                 if (rememberMe === true) {
-                  window.localStorage.setItem("rememberMe", values.id);
+                  window.localStorage.setItem("rememberMe", values.email);
                 } else {
                   localStorage.removeItem("rememberMe");
                 }
@@ -158,6 +157,13 @@ function LoginPage(props) {
               )}
 
               <Form.Item>
+                {/* 아이디 기억 */}
+                <Checkbox
+                  id="rememberMe"
+                  onChange={handleRememberMe}
+                  checked={rememberMe}
+                ></Checkbox>
+                <a> 이메일 저장🔑</a>
                 <div>
                   <Button
                     type="primary"

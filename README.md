@@ -18,7 +18,7 @@ client
 ┃ ┣ components
 ┃ ┃ ┣ views
 ┃ ┃ ┃ ┣ Cast
-┃ ┃ ┃ ┗ CastPage.js
+┃ ┃ ┃ ┃ ┗ CastPage.js
 ┃ ┃ ┃ ┣ commons
 ┃ ┃ ┃ ┃ ┣ GlobalStyles.js
 ┃ ┃ ┃ ┃ ┣ GridCards.js
@@ -50,11 +50,11 @@ client
 ┃ ┃ ┃ ┃ ┃ ┣ RightMenu.js
 ┃ ┃ ┃ ┃ ┃ ┗ Navbar.css
 ┃ ┃ ┃ ┃ ┗ NavBar.js
-┃ ┃ ┃ ┗ RegisterPage
+┃ ┃ ┃ ┣ RegisterPage
 ┃ ┃ ┃ ┃ ┗ RegisterPage.js
 ┃ ┃ ┣ App.js
-┃ ┃ ┗ config.js
-┃ ┗ hoc
+┃ ┃ ┣ config.js
+┃ ┣ hoc
 ┃ ┃ ┗ auth.js
 ┃ ┣ index.css
 ┃ ┣ index.js

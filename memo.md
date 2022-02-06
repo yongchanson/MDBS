@@ -81,6 +81,8 @@ export const Button = styled.button`
 `;
 ```
 
+### 이메일 저장기능 추가
+
 ### NavBar 로고 및 애니메이션효과 추가 : png파일을 svg파일로 변환(https://convertio.co/kr/) 후 "framer-motion"을 사용하여 애니메이션효과 추가(페이지로딩, 테마변경, 마우스hover의 조건 시 애니메이션효과)
 
 ## 로딩문제(NavBar, Footer는 로딩속도 > api를 통해 불러오는 이미지, 글의 로딩속도) -> react-query시도했는데 큰 변화가 안보임(index.js 파일에 <QueryClientProvider> 사용) -> LoadingPage만들어서 페이지가 로딩되기 이전에 보여주도록 구현(로딩시 영화title이 살짝 움직이는 증상있음)
@@ -93,6 +95,6 @@ export const Button = styled.button`
   - export TodoContext; -> import { TodoProvider } from './TodoContext';
 - NavBar메뉴가 로딩시 로그아웃->로그인,가입하기로 변화하는데 이부분은 로딩페이지를 구현하면서 2초 후 나오도록 하였음(배너의 조건문으로 순서는 변경가능할 듯...ex)로그인->로그아웃)
 
-## api에서 이미지가 없어서 불러오지 못하는 경우를 대비해 alt를 넣어두었음 -> alt의 크기가 다른 부분이 존재(정상적으로 불러온 이미지와 같은 크기도 있지만, 아닌 경우도 있음) -> 이미자가 없으면 noImg.png을 삽입하는 형태로 변경..삽입 후 위에 텍스트로 추가 고민중... -> noImg.png을 background으로 보내려다가 실패..
+## 페이지이동시 <a href> 대신 <Link to>을 사용하려고 했으나 로딩페이지를 거치기 않고 바로 이동하여 보류...
 
-- 회원가입 텍스트 다크모드 적용하기 -> 일단 삭제해두었음
+## api에서 이미지가 없어서 불러오지 못하는 경우를 대비해 alt를 넣어두었음 -> alt의 크기가 다른 부분이 존재(정상적으로 불러온 이미지와 같은 크기도 있지만, 아닌 경우도 있음) -> 이미자가 없으면 noImg.png을 삽입하는 형태로 변경..삽입 후 위에 텍스트로 추가 고민중... -> noImg.png을 background으로 보내려다가 실패..
