@@ -4,7 +4,7 @@
   "description": "mdbs",
   "main": "index.js",
   "engine": {
-    "node": "10.16.0",
+    "node": "16.13.2",
     "npm": "6.9.0"
   },
   "scripts": {
