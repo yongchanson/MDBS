@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^3.24.1",
     "axios": "^0.19.2",
+    "build": "^0.1.4",
     "core-js": "^3.6.4",
     "formik": "^1.5.8",
     "framer-motion": "^4.1.17",
