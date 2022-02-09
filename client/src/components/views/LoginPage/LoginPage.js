@@ -176,7 +176,7 @@ function LoginPage(props) {
                     로그인
                   </Button>
                 </div>
-                <a href="/register">회원가입 페이지🚀</a>
+                <a href="/register">회원가입 페이지</a>
               </Form.Item>
             </form>
           </div>

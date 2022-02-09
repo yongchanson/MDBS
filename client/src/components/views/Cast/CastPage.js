@@ -21,7 +21,7 @@ function CastPage(props) {
 
     castName(castpoint);
     movieList(moviepoint);
-  }, []);
+  }, [castId]);
 
   const castName = (castpoint) => {
     fetch(castpoint)
