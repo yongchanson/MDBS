@@ -2,18 +2,21 @@ import React, { Suspense, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
 // pages
-import LandingPage from "./views/LandingPage/LandingPage.js";
-import LoginPage from "./views/LoginPage/LoginPage.js";
-import RegisterPage from "./views/RegisterPage/RegisterPage.js";
-import NavBar from "./views/NavBar/NavBar";
-import Footer from "./views/Footer/Footer";
-import MovieDetail from "./views/MovieDetail/MovieDetail";
-import FavoritePage from "./views/FavoritePage/FavoritePage";
-import CastPage from "./views/Cast/CastPage";
+import LandingPage from "/Users/user/Desktop/MDBS/client/src/components/views/LandingPage/LandingPage.js";
+import LoginPage from "/Users/user/Desktop/MDBS/client/src/components/views/LoginPage/LoginPage.js";
+import RegisterPage from "/Users/user/Desktop/MDBS/client/src/components/views/RegisterPage/RegisterPage.js";
+import NavBar from "/Users/user/Desktop/MDBS/client/src/components/views/NavBar/NavBar";
+import Footer from "/Users/user/Desktop/MDBS/client/src/components/views/Footer/Footer";
+import MovieDetail from "/Users/user/Desktop/MDBS/client/src/components/views/MovieDetail/MovieDetail";
+import FavoritePage from "/Users/user/Desktop/MDBS/client/src/components/views/FavoritePage/FavoritePage";
+import CastPage from "/Users/user/Desktop/MDBS/client/src/components/views/Cast/CastPage";
 //styled
 import styled, { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "./views/commons/GlobalStyles";
-import { lightTheme, darkTheme } from "./views/commons/Theme";
+import { GlobalStyles } from "/Users/user/Desktop/MDBS/client/src/components/views/commons/GlobalStyles";
+import {
+  lightTheme,
+  darkTheme,
+} from "/Users/user/Desktop/MDBS/client/src/components/views/commons/Theme";
 
 import { Helmet } from "react-helmet";
 import Logo from "./views/commons/MDBS_LOGO.png";
