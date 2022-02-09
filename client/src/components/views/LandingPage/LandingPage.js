@@ -17,6 +17,8 @@ function LandingPage() {
   const [MainMovieImage, setMainMovieImage] = useState(null);
   const [CurrentPage, setCurrentPage] = useState(0);
 
+  const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=1`;
+
   const fetchMovies = (endpoint) => {
     return fetch(endpoint)
       .then((response) => response.json())
