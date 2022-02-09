@@ -163,7 +163,7 @@ function LoginPage(props) {
                   onChange={handleRememberMe}
                   checked={rememberMe}
                 ></Checkbox>
-                <a> 이메일 저장🔑</a>
+                <a> 이메일 저장</a>
                 <div>
                   <Button
                     type="primary"
