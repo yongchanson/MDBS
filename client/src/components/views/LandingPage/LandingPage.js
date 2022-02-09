@@ -3,7 +3,7 @@ import { API_URL, API_KEY, IMAGE_BASE_URL } from "../../Config";
 import MainImage from "../../views/commons/MainImage";
 import GridCards from "../commons/GridCards";
 import { Row } from "antd";
-import noImg from "../commons/NoImg.png";
+import noImg from "../commons/noImg.png";
 import { Button } from "../commons/toggleButton";
 import { Helmet } from "react-helmet";
 import LoadingPage from "../Loading/LoadingPage";

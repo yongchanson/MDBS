@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { API_URL, API_KEY, IMAGE_BASE_URL } from "../../Config";
 import GridCards from "../commons/GridCards";
 import { Row } from "antd";
-import noImg from "../commons/NoImg.png";
+import noImg from "../commons/noImg.png";
 import { Helmet } from "react-helmet";
 import LoadingPage from "../Loading/LoadingPage";
 import { useQuery } from "react-query";
