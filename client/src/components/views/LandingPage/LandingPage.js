@@ -19,24 +19,27 @@ function LandingPage() {
 
   const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=1`;
 
-  const fetchMovies = (endpoint) => {
-    return fetch(endpoint)
-      .then((response) => response.json())
-      .then((response) => {
-        // console.log(response);
+  const fetchMovies = useCallback(
+    (endpoint) => {
+      return fetch(endpoint)
+        .then((response) => response.json())
+        .then((response) => {
+          // console.log(response);
 
-        setMovies([...Movies, ...response.results]); //...Movies : 처음 출력되는 20개의 영화를 보존하기 위함(없을경우 기존 영화가 사라지고 새로운 영화가 나옴)
-        setMainMovieImage(response.results[0]);
-        setCurrentPage(response.page);
-      });
-  };
+          setMovies([...Movies, ...response.results]); //...Movies : 처음 출력되는 20개의 영화를 보존하기 위함(없을경우 기존 영화가 사라지고 새로운 영화가 나옴)
+          setMainMovieImage(response.results[0]);
+          setCurrentPage(response.page);
+        });
+    },
+    [endpoint]
+  );
 
   useEffect(() => {
     //인기영화리스트 중 첫페이지(20개)를 받아오기 위한 것
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=1`;
 
     fetchMovies(endpoint);
-  }, [fetchMovies, endpoint]);
+  }, [fetchMovies]);
 
   function getMovies() {
     return fetch(`${API_URL}movie/popular?api_key=${API_KEY}&page=1`).then(
