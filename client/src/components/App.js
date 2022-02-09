@@ -12,7 +12,7 @@ import FavoritePage from "./views/FavoritePage/FavoritePage";
 import CastPage from "./views/Cast/CastPage";
 //styled
 import styled, { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "./views/commons/GlobalStyles";
+import { GlobalStyles } from "./views/commons/globalStyles";
 import { lightTheme, darkTheme } from "./views/commons/theme";
 
 import { Helmet } from "react-helmet";
