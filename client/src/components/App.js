@@ -13,7 +13,7 @@ import CastPage from "./views/Cast/CastPage";
 //styled
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./views/commons/GlobalStyles";
-import { lightTheme, darkTheme } from "./views/commons/Theme";
+import { lightTheme, darkTheme } from "./views/commons/theme";
 
 import { Helmet } from "react-helmet";
 import Logo from "./views/commons/MDBS_LOGO.png";
