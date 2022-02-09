@@ -44,7 +44,7 @@ function Favorite(props) {
         alert("정보를 가져오는데 실패했습니다.");
       }
     });
-  }, []);
+  }, [variables]);
 
   const onClickFavorite = () => {
     if (Favorited) {

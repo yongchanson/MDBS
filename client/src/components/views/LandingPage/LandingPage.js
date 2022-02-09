@@ -22,7 +22,7 @@ function LandingPage() {
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=1`;
 
     fetchMovies(endpoint);
-  }, []);
+  }, [fetchMovies]);
 
   const fetchMovies = (endpoint) => {
     return fetch(endpoint)
