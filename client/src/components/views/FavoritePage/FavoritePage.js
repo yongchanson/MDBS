@@ -3,7 +3,7 @@ import "./Favorite.css";
 import Axios from "axios";
 import { Popover } from "antd"; //영화제목에 마우스hover를 위한 것
 import { IMAGE_BASE_URL } from "../../Config";
-import { Button } from "../commons/ToggleButton";
+import { Button } from "../commons/toggleButton";
 import { Helmet } from "react-helmet";
 import LoadingPage from "../Loading/LoadingPage";
 
