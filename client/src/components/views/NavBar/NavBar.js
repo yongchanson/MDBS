@@ -6,8 +6,8 @@ import styled, { ThemeProvider } from "styled-components";
 import "./Sections/Navbar.css";
 
 import DarkModeToggle from "react-dark-mode-toggle";
-import { GlobalStyles } from "../commons/GlobalStyles";
-import { lightTheme, darkTheme } from "../commons/Theme";
+import { GlobalStyles } from "../commons/globalStyles";
+import { lightTheme, darkTheme } from "../commons/theme";
 import { motion } from "framer-motion";
 
 const Nav = styled.div`
