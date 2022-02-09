@@ -4,7 +4,7 @@ import MainImage from "../../views/commons/MainImage";
 import GridCards from "../commons/GridCards";
 import { Row } from "antd";
 import noImg from "../commons/NoImg.png";
-import { Button } from "../commons/ToggleButton";
+import { Button } from "../commons/toggleButton";
 import { Helmet } from "react-helmet";
 import LoadingPage from "../Loading/LoadingPage";
 import { useQuery } from "react-query";
