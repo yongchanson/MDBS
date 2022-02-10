@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { API_URL, API_KEY, IMAGE_BASE_URL } from "../../Config";
 import MainImage from "../../views/commons/MainImage";
 import GridCards from "../commons/GridCards";
@@ -30,12 +30,10 @@ function LandingPage() {
   };
 
   useEffect(() => {
-    const fetchBusinesses = () => {
-      //인기영화리스트 중 첫페이지(20개)를 받아오기 위한 것
-      const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=1`;
-      fetchMovies(endpoint);
-    };
-    fetchBusinesses();
+    //인기영화리스트 중 첫페이지(20개)를 받아오기 위한 것
+    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=1`;
+    fetchMovies(endpoint);
+    // eslint-disable-next-line
   }, []);
 
   function getMovies() {
