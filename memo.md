@@ -1,4 +1,4 @@
-### 푸터실시간 시간변경 -> react-live-clock 사용(moment-timezone도 같이 설치해야 작동함)
+### Footer 실시간 시간표시 -> react-live-clock 사용(moment-timezone도 같이 설치해야 작동함)
 
 ### ERROR : Can't import the named export 'Children' from non EcmaScript module (only default export is available)
 
@@ -95,6 +95,6 @@ export const Button = styled.button`
   - export TodoContext; -> import { TodoProvider } from './TodoContext';
 - NavBar메뉴가 로딩시 로그아웃->로그인,가입하기로 변화하는데 이부분은 로딩페이지를 구현하면서 2초 후 나오도록 하였음(배너의 조건문으로 순서는 변경가능할 듯...ex)로그인->로그아웃)
 
-## 페이지이동시 <a href> 대신 <Link to>을 사용하려고 했으나 로딩페이지를 거치기 않고 바로 이동하여 보류...
+## 페이지이동시 `<a href>` 대신 `<Link to>`을 사용하려고 했으나 로딩페이지를 거치기 않고 바로 이동하여 보류...
 
 ## api에서 이미지가 없어서 불러오지 못하는 경우를 대비해 alt를 넣어두었음 -> alt의 크기가 다른 부분이 존재(정상적으로 불러온 이미지와 같은 크기도 있지만, 아닌 경우도 있음) -> 이미자가 없으면 noImg.png을 삽입하는 형태로 변경..삽입 후 위에 텍스트로 추가 고민중... -> noImg.png을 background으로 보내려다가 실패..
