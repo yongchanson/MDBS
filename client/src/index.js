@@ -7,7 +7,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import Reducer from "./_reducers";
 import { Provider } from "react-redux";
@@ -33,9 +33,9 @@ ReactDOM.render(
     )}
   >
     <QueryClientProvider client={client}>
-      <HashRouter>
+      <BrowserRouter>
         <App />
-      </HashRouter>
+      </BrowserRouter>
     </QueryClientProvider>
   </Provider>,
   document.getElementById("root")
