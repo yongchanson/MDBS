@@ -2,7 +2,8 @@
 
 ### ERROR : Can't import the named export 'Children' from non EcmaScript module (only default export is available)
 
-- `import { motion } from 'framer-motion/dist/es/index';` 으로 경로변경 OR "framer-motion" 5번대버전 -> "^4.1.17"으로 다운그레이드
+- `import { motion } from 'framer-motion/dist/es/index';` 으로 경로변경 OR
+- "framer-motion" 5번대버전 -> "^4.1.17"으로 다운그레이드
 
 ### ERROR : Uncaught TypeError: undefined is not a function at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
 
