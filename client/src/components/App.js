@@ -18,6 +18,10 @@ import { lightTheme, darkTheme } from "./views/commons/theme";
 import { Helmet } from "react-helmet";
 import Logo from "./views/commons/MDBS_LOGO.png";
 
+// document.cookie = "safeCokie1=foo;SameSite=Lax";
+// document.cookie = "safeCokie2=foo";
+// document.cookie = "safeCokie1=foo;SameSite=None;Secure";
+
 const Wrapper = styled.div`
   paddingtop: "69px";
   minheight: "calc(100vh - 80px)";
