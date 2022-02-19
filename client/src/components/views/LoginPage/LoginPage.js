@@ -134,6 +134,7 @@ function LoginPage(props) {
                       ? "text-input error"
                       : "text-input"
                   }
+                  autocomplete="off"
                 />
                 {errors.password && touched.password && (
                   <div className="input-feedback">{errors.password}</div>

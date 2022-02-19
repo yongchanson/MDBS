@@ -180,6 +180,7 @@ function RegisterPage(props) {
                       ? "text-input error"
                       : "text-input"
                   }
+                  autocomplete="off"
                 />
                 {errors.password && touched.password && (
                   <div className="input-feedback">{errors.password}</div>
@@ -206,6 +207,7 @@ function RegisterPage(props) {
                       ? "text-input error"
                       : "text-input"
                   }
+                  autocomplete="off"
                 />
                 {errors.confirmPassword && touched.confirmPassword && (
                   <div className="input-feedback">{errors.confirmPassword}</div>
