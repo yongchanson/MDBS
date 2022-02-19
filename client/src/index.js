@@ -19,7 +19,13 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 import axios from "axios";
 
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = false;
+
+// axios({
+//   xhrFields: {
+//     withCredentials: false,
+//   },
+// });
 
 const createStoreWithMiddleware = applyMiddleware(
   promiseMiddleware,
