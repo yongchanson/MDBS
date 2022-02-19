@@ -21,12 +21,6 @@ import axios from "axios";
 
 axios.defaults.withCredentials = false;
 
-// axios({
-//   xhrFields: {
-//     withCredentials: false,
-//   },
-// });
-
 const createStoreWithMiddleware = applyMiddleware(
   promiseMiddleware,
   ReduxThunk
