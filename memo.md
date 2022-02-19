@@ -98,4 +98,16 @@ export const Button = styled.button`
 
 ## 페이지이동시 `<a href>` 대신 `<Link to>`을 사용하려고 했으나 로딩페이지를 거치기 않고 바로 이동하여 보류...
 
-## api에서 이미지가 없어서 불러오지 못하는 경우를 대비해 alt를 넣어두었음 -> alt의 크기가 다른 부분이 존재(정상적으로 불러온 이미지와 같은 크기도 있지만, 아닌 경우도 있음) -> 이미자가 없으면 noImg.png을 삽입하는 형태로 변경..삽입 후 위에 텍스트로 추가 고민중... -> noImg.png을 background으로 보내려다가 실패..
+## api에서 이미지가 없어서 불러오지 못하는 경우를 대비해 alt를 넣어두었음 -> alt의 크기가 다른 부분이 존재(정상적으로 불러온 이미지와 같은 크기도 있지만, 아닌 경우도 있음) -> 이미자가 없으면 noImg.png을 삽입하는 형태로 변경..noImg.png 위에 텍스를 삽입하면 더 좋을것 같다고 생각됨 -> noImg.png을 background으로 보내려다가 실패하였음...일단 보류
+
+# 배포작업
+
+## 프론트엔드(react, FolderName:client)는 Netlify로 배포, 백엔드(node.js, FolderName:server)는 heroku를 통해 배포하였음
+
+## 프론트엔드 루트페이지( "/" )는 접속가능하지만, 다른 페이지로 페이지이동 불가(페이지이동 시 not found) -> client/public/\_redirects 파일을 생성하여 해결함
+
+## 회원가입, 로그인이 불가능한 현상(프론트엔드와 백엔드가 연결되지 않아 생기는 현상으로 추정) -> client/src/components/Config.js의 Line 1 : USER_SERVER을 api/users -> {백엔드주소}/api/users으로 변경하여 연결 성공함(문제 : 회원가입 가능, 로그인 불가능)
+
+## 회원가입 가능, 로그인 불가능한 문제 -> 서브도메인이 달라 쿠키를 보내지 못하는 것으로 추정됨(프론트엔드 : mdbs.herokuapp.com, 백엔드 : mdbs.netlify.app) -> 호스팅케이알이라는 곳에서 1650원에 도메인을 구입하여 서브도메인을 동일하게 변경하였음 -> 프론트엔드는 https, 백엔드는 http이여서 전송하지 못하는 현상이 있음... heroku는 7달러를 결제해야 도메인커스텀 시 https를 사용할 수 있다고 함...백엔드를 다른 사이트를 통해 배포할지 고민중...
+
+- Error : `Mixed Content: The page at 'https://{프론트엔드주소}/login' was loaded over HTTPS, but requested an insecure XMLHttpRequest endpoint 'http://{백엔드주소}/api/users/auth'. This request has been blocked; the content must be served over HTTPS.`

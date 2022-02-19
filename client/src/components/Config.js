@@ -1,5 +1,5 @@
 //SERVER ROUTES
-export const USER_SERVER = "https://mdbs.herokuapp.com/api/users";
+export const USER_SERVER = "http://server.mdbs.monster/api/users";
 
 export const API_URL = "https://api.themoviedb.org/3/";
 export const API_KEY = "844dba0bfd8f3a4f3799f6130ef9e335&language=ko";
