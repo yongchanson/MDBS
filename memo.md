@@ -108,10 +108,12 @@ export const Button = styled.button`
 
 ## 회원가입, 로그인이 불가능한 현상(프론트엔드와 백엔드가 연결되지 않아 생기는 현상으로 추정) -> client/src/components/Config.js의 Line 1 : USER_SERVER을 api/users -> {백엔드주소}/api/users으로 변경하여 연결 성공함(문제 : 회원가입 가능, 로그인 불가능)
 
-## 회원가입 가능, 로그인 불가능한 문제 -> 서브도메인이 달라 쿠키를 보내지 못하는 것으로 추정됨(프론트엔드 : mdbs.netlify.app, 백엔드 : mdbs.herokuapp.com) -> 호스팅케이알이라는 곳에서 1650원에 도메인을 구입하여 서브도메인을 동일하게 변경하였음 -> 프론트엔드는 https, 백엔드는 http이여서 전송하지 못하는 현상이 있다.(임시로 html파일 head에 옵션추가) 그리고 커스텀도메인으로는 백엔드연결이 되지 않았다.(이유는 알 수 없음) heroku는 한달에 7달러를 결제해야 커스텀도메인 시 https를 사용할 수 있다고 한다.(https://www.steemcoinpan.com/sct/@jacobyu/heroku-custom-domain-ssl-https)...만약 https로 바꿔도 연결이 가능할지 모르는 상황이라 백엔드를 다른 사이트를 통해 배포할지 고민중...
+## 회원가입 가능, 로그인 불가능한 문제 -> 도메인이 달라 쿠키를 보내지 못하는 것으로 추정됨(프론트엔드 : mdbs.netlify.app, 백엔드 : mdbs.herokuapp.com) -> 호스팅케이알이라는 곳에서 1650원에 도메인을 구입하여 도메인을 동일하게 변경하였음 -> 프론트엔드는 https, 백엔드는 http이여서 전송하지 못하는 현상이 있다.(임시로 html파일 head에 http-equiv을 추가하면 전송이 가능했다.) 그리고 커스텀도메인으로는 백엔드연결이 되지 않았다.(이유는 알 수 없음) heroku는 한달에 7달러를 결제해야 커스텀도메인 시 https를 사용할 수 있다고 한다.(https://www.steemcoinpan.com/sct/@jacobyu/heroku-custom-domain-ssl-https)...만약 https로 바꿔도 연결이 가능할지 모르는 상황이라 백엔드를 다른 사이트를 통해 배포할지 고민중...
 
 - Error : `Mixed Content: The page at 'https://{프론트엔드주소}/login' was loaded over HTTPS, but requested an insecure XMLHttpRequest endpoint 'http://{백엔드주소}/api/users/auth'. This request has been blocked; the content must be served over HTTPS.`
 
 - 경고 : Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) -> LoginPage.js, RegisterPage.js의 `<input type="password">`에 `autocomplete="off"` 속성을 추가하여 제거하였다. 크롬버전이 최신이면 자동 완성 속성이 존재하여야 한다고 설명되어 있다. 나는 비밀번호 자동완성 기능이 필요없다고 생각되어 off로 설정하였다. (https://stackoverflow.com/questions/54970352/input-elements-should-have-autocomplete-attributes)
 
 - [Violation] 'setTimeout' handler took 83ms
+
+## 백엔드는 그대로 두고, 프론트엔드를 heroku로 배포하였다.(https://mdbsclient.herokuapp.com/) 그런데 도메인이 .herokuapp.com으로 동일한데 증상이 같다(로그인 불가). 도메인 문제가 아닐 수 있음...한꺼번에 배포할지 고민중...
