@@ -46,14 +46,11 @@ router.post("/login", (req, res) => {
 
       user.generateToken((err, user) => {
         if (err) return res.status(400).send(err);
-        res.cookie("w_authExp", user.tokenExp, { domain: ".herokuapp.com" });
-        res
-          .cookie("w_auth", user.token, { domain: ".herokuapp.com" })
-          .status(200)
-          .json({
-            loginSuccess: true,
-            userId: user._id,
-          });
+        res.cookie("w_authExp", user.tokenExp);
+        res.cookie("w_auth", user.token).status(200).json({
+          loginSuccess: true,
+          userId: user._id,
+        });
       });
     });
   });
