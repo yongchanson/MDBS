@@ -19,8 +19,8 @@ const connect = mongoose
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
 
-app.use(cors());
-// app.use(cors({origin: true, credentials: true}))
+// app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 
 // app.use(
 //   cors({
