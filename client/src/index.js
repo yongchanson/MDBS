@@ -17,9 +17,8 @@ import ReduxThunk from "redux-thunk";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import axios from "axios";
-
-axios.defaults.withCredentials = false;
+// import axios from "axios";
+// axios.defaults.withCredentials = false;
 
 const createStoreWithMiddleware = applyMiddleware(
   promiseMiddleware,
