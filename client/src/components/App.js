@@ -37,7 +37,6 @@ function App() {
         <link href={Logo} />
       </Helmet>
       <GlobalStyles />
-
       <Wrapper>
         <Suspense fallback={<div>Loading...</div>}>
           {/* <Header> */}
