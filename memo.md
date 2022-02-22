@@ -114,6 +114,6 @@ export const Button = styled.button`
 
 - 경고 : Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) -> LoginPage.js, RegisterPage.js의 `<input type="password">`에 `autocomplete="off"` 속성을 추가하여 제거하였다. 크롬버전이 최신이면 자동 완성 속성이 존재하여야 한다고 설명되어 있다. 나는 비밀번호 자동완성 기능이 필요없다고 생각되어 off로 설정하였다. (https://stackoverflow.com/questions/54970352/input-elements-should-have-autocomplete-attributes)
 
-- [Violation] 'setTimeout' handler took 83ms
-
 ## 백엔드는 그대로 두고, 프론트엔드를 heroku로 배포하였다.(https://mdbsclient.herokuapp.com/) 그런데 도메인이 .herokuapp.com으로 동일한데 증상이 같다(로그인 불가). 도메인 문제가 아닐 수 있음...한꺼번에 배포할지 고민중...
+
+## heroku를 통해 프론트엔드 + 백엔드는 함께 배포함(https://mdbs.herokuapp.com/, 도메인 동일, 로그인가능), 문제는 도메인이 달라서(herokuapp.com뿐만 아니라 앞부분도 같아야 도메인이 동일하다고 할 수 있다고 한다.) 쿠키정책상 전달이 되지 않았던 것이다. 도메인이 다른 경우 쿠키전달도 해보고 싶어서 server/index.js에 `app.use(cors({origin: true, credentials: true}))`을 이용하여 전달해보았지만 실패하였다.
