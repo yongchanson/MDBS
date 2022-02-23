@@ -10,6 +10,7 @@ import { Button } from "../commons/toggleButton";
 import { Helmet } from "react-helmet";
 import LoadingPage from "../Loading/LoadingPage";
 import { useQuery } from "react-query";
+import Logo from "../commons/MDBS_LOGO.png";
 
 function MovieDetail(props) {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
@@ -60,6 +61,7 @@ function MovieDetail(props) {
   ) : (
     <div>
       <Helmet>
+        <link href={Logo} />
         <title>{`${Movie.original_title} | ${Movie.title}`}</title>
       </Helmet>
       {MainMovieImage && (
