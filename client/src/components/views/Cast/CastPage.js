@@ -6,7 +6,7 @@ import noImg from "../commons/noImg.png";
 import { Helmet } from "react-helmet";
 import LoadingPage from "../Loading/LoadingPage";
 import { useQuery } from "react-query";
-import Logo from "../commons/MDBS_LOGO.png";
+// import Logo from "../commons/MDBS_LOGO.png";
 
 function CastPage(props) {
   const [Casts, setCasts] = useState([]);
@@ -57,7 +57,7 @@ function CastPage(props) {
   ) : (
     <div style={{ width: "100%", margin: "0" }}>
       <Helmet>
-        <link href={Logo} />
+        {/* <link href={Logo} /> */}
         <title>{`${Casts} | ${Birthday === null ? "" : Birthday}`}</title>
       </Helmet>
       {/* 이부분이 사라지면 헤더위치가 바뀜 */}
