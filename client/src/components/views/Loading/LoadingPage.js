@@ -17,15 +17,19 @@ const Title = styled.h1`
 
 const Loading = () => {
   return (
-    <div style={{ width: "100%" }}>
-      <Helmet>
-        <title>Loading... | 로딩...</title>
-      </Helmet>
+    <>
+      {/* 이부분이 사라지면 헤더위치가 바뀜 */}
+      <div style={{ fontSize: "0" }}>Loading</div>
+      <div style={{ width: "100%" }}>
+        <Helmet>
+          <title>Loading... | 로딩...</title>
+        </Helmet>
 
-      <Title>
-        <Spinner />
-      </Title>
-    </div>
+        <Title>
+          <Spinner />
+        </Title>
+      </div>
+    </>
   );
 };
 

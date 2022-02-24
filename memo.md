@@ -119,3 +119,5 @@ export const Button = styled.button`
 ## heroku를 통해 프론트엔드 + 백엔드는 함께 배포함(https://mdbs.herokuapp.com/, 도메인 동일, 로그인가능), 문제는 도메인이 달라서(herokuapp.com뿐만 아니라 앞부분도 같아야 도메인이 동일하다고 할 수 있다고 한다.) 쿠키정책상 전달이 되지 않았던 것이다. 도메인이 다른 경우 쿠키전달도 해보고 싶어서 server/index.js에 `app.use(cors({origin: true, credentials: true}))`을 이용하여 전달해보았지만 실패하였다.
 
 ## 수정예정사항 : 해로쿠로 배포한 사이트가 첫접속이 느린 경우가 있는데 이를 보완할 수 있는 방법 구상, 창의 크기에 따라 이미지크기가 달라지는 부분, movieDetail, castPage는 Helmet의 link가 적용x 둘의 공통점은 주소에 :id가 들어감
+
+- https://kaffeine.herokuapp.com/ 을 이용하면 30분마다 해로쿠앱에 핑을 보내 절전모드로 전환되지 않는다. 매월 1000시간무료이므로(카드인증기준) 설정해두었다.(다른앱이 생기면 수정예정)

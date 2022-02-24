@@ -18,6 +18,8 @@ import { lightTheme, darkTheme } from "./views/commons/theme";
 import { Helmet } from "react-helmet";
 import Logo from "./views/commons/MDBS_LOGO.png";
 
+import LoadingPage from "./views/Loading/LoadingPage";
+
 const Wrapper = styled.div`
   paddingtop: "69px";
   minheight: "calc(100vh - 80px)";
@@ -61,6 +63,7 @@ function App() {
               path="/favorite"
               component={Auth(FavoritePage, true)}
             />
+            <Route exact path="/loading" component={Auth(LoadingPage, null)} />
           </Switch>
           <Footer />
         </Suspense>

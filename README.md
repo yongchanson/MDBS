@@ -26,6 +26,7 @@
 ### 2. 로고
 
 NavBar 로고 및 애니메이션효과 추가하였음. 그림판으로 png파일을 생성하고 이를 svg파일로 변환 후 "framer-motion"을 사용하여 애니메이션효과를 추가함
+
 ![mdbslogo](https://user-images.githubusercontent.com/84462830/155280482-18486350-6cd4-4b22-97f1-d6a390334988.gif)
 
 > png -> svg 변환 : https://convertio.co/kr/
@@ -33,23 +34,28 @@ NavBar 로고 및 애니메이션효과 추가하였음. 그림판으로 png파�
 ### 3. footer
 
 실시간 날짜 및 시간 표시
+
 ![footer](https://user-images.githubusercontent.com/84462830/155281875-ade16b07-da9f-4830-8261-05d9e128c6e1.gif)
 
 - CastPage : TMDB를 통해 배우이미지에 링크추가 및 출연한 영화리스트 표시
-  ![castpage](https://user-images.githubusercontent.com/84462830/155287216-a257535d-14fd-444e-90b2-bd30ed04e3b2.gif)
+
+![castpage](https://user-images.githubusercontent.com/84462830/155287216-a257535d-14fd-444e-90b2-bd30ed04e3b2.gif)
 
 - Helmet : 타이틀, 파비콘 변경
-  ![helmet](https://user-images.githubusercontent.com/84462830/155297361-ddab82b2-96a9-46f0-acde-feb1152bf248.gif)
 
-  > React Helmet : https://www.npmjs.com/package/react-helmet
+![helmet](https://user-images.githubusercontent.com/84462830/155297361-ddab82b2-96a9-46f0-acde-feb1152bf248.gif)
+
+> React Helmet : https://www.npmjs.com/package/react-helmet
 
 ### 4. LoadingPage
 
 Spinner을 활용한 로딩페이지 출력
 
-> https://github.com/yongchanson/MDBS/blob/9cfaebd3193f968c9e19fc886bdc77e6cafe89e6/client/src/components/views/Loading/LoadingPage.js#L18
+![loading](https://user-images.githubusercontent.com/84462830/155567233-8ee1afa2-7545-4802-8172-8a2afce34253.gif)
 
-> https://github.com/yongchanson/MDBS/blob/9cfaebd3193f968c9e19fc886bdc77e6cafe89e6/client/src/components/views/Loading/Spinner.js#L4
+> https://github.com/yongchanson/MDBS/blob/645c463930e1464200d0645cd13154534cc449f5/client/src/components/views/Loading/LoadingPage.js
+
+> https://github.com/yongchanson/MDBS/blob/645c463930e1464200d0645cd13154534cc449f5/client/src/components/views/Loading/Spinner.js
 
 ---
 
