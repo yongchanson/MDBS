@@ -37,17 +37,17 @@ NavBar 로고 및 애니메이션효과 추가하였음. 그림판으로 png파�
 
 ![footer](https://user-images.githubusercontent.com/84462830/155281875-ade16b07-da9f-4830-8261-05d9e128c6e1.gif)
 
-- CastPage : TMDB를 통해 배우이미지에 링크추가 및 출연한 영화리스트 표시
+### 5. CastPage : TMDB를 통해 배우이미지에 링크추가 및 출연한 영화리스트 표시
 
 ![castpage](https://user-images.githubusercontent.com/84462830/155287216-a257535d-14fd-444e-90b2-bd30ed04e3b2.gif)
 
-- Helmet : 타이틀, 파비콘 변경
+### 6. Helmet : 타이틀, 파비콘 변경
 
 ![helmet](https://user-images.githubusercontent.com/84462830/155297361-ddab82b2-96a9-46f0-acde-feb1152bf248.gif)
 
 > React Helmet : https://www.npmjs.com/package/react-helmet
 
-### 4. LoadingPage
+### 7. LoadingPage
 
 Spinner을 활용한 로딩페이지 출력
 
@@ -61,14 +61,17 @@ Spinner을 활용한 로딩페이지 출력
 
 # 제작하면서 어려웠던 점
 
-- 로딩페이지 :
-- 배포 :
+- 다크모드 : 지인분이 넷플릭스가 다크모드라서 사용하기 싫다는 얘기를 먹고 충격을 먹었다. 화이트모드/다크모드가 UI에 이렇게 큰 영향을 미치는지 알게 되었고 메뉴부분이 테마변경 시 약간 어색한데 좋은 아이디어가 생기면 수정해보겠음.
+- 로딩페이지 : 배포하니까 로딩페이지 대신 흰화면이 나오는데 원인을 모르겠음.
+- 배포 : 배포과정이 매우 오래 걸림(약20일), 예전에 강의보면서 1번해보고 2번째인데 화면을 정상적으로 나오는데는 오래 걸리지 않았는데 보안상 쿠키가 전달되지 않은 것 때문에 시간이 오래 걸렸다.
+- 개발하면서 막히는게 있을때마다 조금씩 적은 것 : momo.md
+  > https://github.com/yongchanson/MDBS/blob/c173a931cc5b00c46a025200b070b34ed5aaaa5f/memo.md
 
 ---
 
 # 제작하면서 사용한 것
 
-react, node.js, mongoose, react-redux, antd, react-live-clock, styled-components, globalStyles, react-dark-mode-toggle, Spinner
+react, node.js, mongoose, mongoDB, react-redux, antd, react-live-clock, styled-components, globalStyles, react-dark-mode-toggle, Spinner
 
 ---
 
