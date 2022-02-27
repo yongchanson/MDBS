@@ -17,6 +17,7 @@ import { lightTheme, darkTheme } from "./views/commons/theme";
 
 import { Helmet } from "react-helmet";
 import Logo from "./views/commons/MDBS_LOGO.png";
+// import Logo from "../../public/MDBS_LOGO.png"; //src
 
 import LoadingPage from "./views/Loading/LoadingPage";
 
@@ -30,45 +31,51 @@ function App() {
   const [theme] = useState(localValue);
 
   return (
-    <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
+    <>
       <Helmet>
         <link href={Logo} />
       </Helmet>
-      <GlobalStyles />
-      <Wrapper>
-        <Suspense fallback={<div>Loading...</div>}>
-          {/* <Header> */}
-          <NavBar />
+      <ThemeProvider theme={theme === false ? lightTheme : darkTheme}>
+        <GlobalStyles />
+        <Wrapper>
+          <Suspense fallback={<div>Loading...</div>}>
+            {/* <Header> */}
+            <NavBar />
 
-          <Switch>
-            <Route exact path="/" component={Auth(LandingPage, null)} />
-            <Route exact path="/login" component={Auth(LoginPage, false)} />
-            <Route
-              exact
-              path="/register"
-              component={Auth(RegisterPage, false)}
-            />
-            <Route
-              exact
-              path="/movie/:movieId"
-              component={Auth(MovieDetail, null)}
-            />
-            <Route
-              exact
-              path="/cast/:castId"
-              component={Auth(CastPage, null)}
-            />
-            <Route
-              exact
-              path="/favorite"
-              component={Auth(FavoritePage, true)}
-            />
-            <Route exact path="/loading" component={Auth(LoadingPage, null)} />
-          </Switch>
-          <Footer />
-        </Suspense>
-      </Wrapper>
-    </ThemeProvider>
+            <Switch>
+              <Route exact path="/" component={Auth(LandingPage, null)} />
+              <Route exact path="/login" component={Auth(LoginPage, false)} />
+              <Route
+                exact
+                path="/register"
+                component={Auth(RegisterPage, false)}
+              />
+              <Route
+                exact
+                path="/movie/:movieId"
+                component={Auth(MovieDetail, null)}
+              />
+              <Route
+                exact
+                path="/cast/:castId"
+                component={Auth(CastPage, null)}
+              />
+              <Route
+                exact
+                path="/favorite"
+                component={Auth(FavoritePage, true)}
+              />
+              <Route
+                exact
+                path="/loading"
+                component={Auth(LoadingPage, null)}
+              />
+            </Switch>
+            <Footer />
+          </Suspense>
+        </Wrapper>
+      </ThemeProvider>
+    </>
   );
 }
 
