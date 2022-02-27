@@ -102,22 +102,26 @@ export const Button = styled.button`
 
 # 배포작업
 
-## 프론트엔드(react, FolderName:client)는 Netlify로 배포, 백엔드(node.js, FolderName:server)는 heroku를 통해 배포하였음
+### 프론트엔드(react, FolderName:client)는 Netlify로 배포, 백엔드(node.js, FolderName:server)는 heroku를 통해 배포하였음
 
-## 프론트엔드 루트페이지( "/" )는 접속가능하지만, 다른 페이지로 페이지이동 불가(페이지이동 시 not found) -> client/public/\_redirects 파일을 생성하여 해결함
+### 프론트엔드 루트페이지( "/" )는 접속가능하지만, 다른 페이지로 페이지이동 불가(페이지이동 시 not found) -> client/public/\_redirects 파일을 생성하여 해결함
 
-## 회원가입, 로그인이 불가능한 현상(프론트엔드와 백엔드가 연결되지 않아 생기는 현상으로 추정) -> client/src/components/Config.js의 Line 1 : USER_SERVER을 api/users -> {백엔드주소}/api/users으로 변경하여 연결 성공함(문제 : 회원가입 가능, 로그인 불가능)
+### 회원가입, 로그인이 불가능한 현상(프론트엔드와 백엔드가 연결되지 않아 생기는 현상으로 추정) -> client/src/components/Config.js의 Line 1 : USER_SERVER을 api/users -> {백엔드주소}/api/users으로 변경하여 연결 성공함(문제 : 회원가입 가능, 로그인 불가능)
 
-## 회원가입 가능, 로그인 불가능한 문제 -> 도메인이 달라 쿠키를 보내지 못하는 것으로 추정됨(프론트엔드 : mdbs.netlify.app, 백엔드 : mdbs.herokuapp.com) -> 호스팅케이알이라는 곳에서 1650원에 도메인을 구입하여 도메인을 동일하게 변경하였음 -> 프론트엔드는 https, 백엔드는 http이여서 전송하지 못하는 현상이 있다.(임시로 html파일 head에 http-equiv을 추가하면 전송이 가능했다.) 그리고 커스텀도메인으로는 백엔드연결이 되지 않았다.(이유는 알 수 없음) heroku는 한달에 7달러를 결제해야 커스텀도메인 시 https를 사용할 수 있다고 한다.(https://www.steemcoinpan.com/sct/@jacobyu/heroku-custom-domain-ssl-https)...만약 https로 바꿔도 연결이 가능할지 모르는 상황이라 백엔드를 다른 사이트를 통해 배포할지 고민중...
+### 회원가입 가능, 로그인 불가능한 문제 -> 도메인이 달라 쿠키를 보내지 못하는 것으로 추정됨(프론트엔드 : mdbs.netlify.app, 백엔드 : mdbs.herokuapp.com) -> 호스팅케이알이라는 곳에서 1650원에 도메인을 구입하여 도메인을 동일하게 변경하였음 -> 프론트엔드는 https, 백엔드는 http이여서 전송하지 못하는 현상이 있다.(임시로 html파일 head에 http-equiv을 추가하면 전송이 가능했다.) 그리고 커스텀도메인으로는 백엔드연결이 되지 않았다.(이유는 알 수 없음) heroku는 한달에 7달러를 결제해야 커스텀도메인 시 https를 사용할 수 있다고 한다.(https://www.steemcoinpan.com/sct/@jacobyu/heroku-custom-domain-ssl-https)...만약 https로 바꿔도 연결이 가능할지 모르는 상황이라 백엔드를 다른 사이트를 통해 배포할지 고민중...
 
 - Error : `Mixed Content: The page at 'https://{프론트엔드주소}/login' was loaded over HTTPS, but requested an insecure XMLHttpRequest endpoint 'http://{백엔드주소}/api/users/auth'. This request has been blocked; the content must be served over HTTPS.`
 
 - 경고 : Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) -> LoginPage.js, RegisterPage.js의 `<input type="password">`에 `autocomplete="off"` 속성을 추가하여 제거하였다. 크롬버전이 최신이면 자동 완성 속성이 존재하여야 한다고 설명되어 있다. 나는 비밀번호 자동완성 기능이 필요없다고 생각되어 off로 설정하였다. (https://stackoverflow.com/questions/54970352/input-elements-should-have-autocomplete-attributes)
 
-## 백엔드는 그대로 두고, 프론트엔드를 heroku로 배포하였다.(https://mdbsclient.herokuapp.com/) 그런데 도메인이 .herokuapp.com으로 동일한데 증상이 같다(로그인 불가). 도메인 문제가 아닐 수 있음...한꺼번에 배포할지 고민중...
+### 백엔드는 그대로 두고, 프론트엔드를 heroku로 배포하였다.(https://mdbsclient.herokuapp.com/) 그런데 도메인이 .herokuapp.com으로 동일한데 증상이 같다(로그인 불가). 도메인 문제가 아닐 수 있음...한꺼번에 배포할지 고민중...
 
-## heroku를 통해 프론트엔드 + 백엔드는 함께 배포함(https://mdbs.herokuapp.com/, 도메인 동일, 로그인가능), 문제는 도메인이 달라서(herokuapp.com뿐만 아니라 앞부분도 같아야 도메인이 동일하다고 할 수 있다고 한다.) 쿠키정책상 전달이 되지 않았던 것이다. 도메인이 다른 경우 쿠키전달도 해보고 싶어서 server/index.js에 `app.use(cors({origin: true, credentials: true}))`을 이용하여 전달해보았지만 실패하였다.
+### heroku를 통해 프론트엔드 + 백엔드는 함께 배포함(https://mdbs.herokuapp.com/, 도메인 동일, 로그인가능), 문제는 도메인이 달라서(herokuapp.com뿐만 아니라 앞부분도 같아야 도메인이 동일하다고 할 수 있다고 한다.) 쿠키정책상 전달이 되지 않았던 것이다. 도메인이 다른 경우 쿠키전달도 해보고 싶어서 server/index.js에 `app.use(cors({origin: true, credentials: true}))`을 이용하여 전달해보았지만 실패하였다.
 
 ## 수정예정사항 : 해로쿠로 배포한 사이트가 첫접속이 느린 경우가 있는데 이를 보완할 수 있는 방법 구상, 창의 크기에 따라 이미지크기가 달라지는 부분, movieDetail, castPage는 Helmet의 link가 적용x 둘의 공통점은 주소에 :id가 들어감
 
-- https://kaffeine.herokuapp.com/ 을 이용하면 30분마다 해로쿠앱에 핑을 보내 절전모드로 전환되지 않는다. 매월 1000시간무료이므로(카드인증기준) 설정해두었다.(다른앱이 생기면 수정예정)
+- 배포한 해로쿠 사이트 첫접속이 느린 경우 : https://kaffeine.herokuapp.com/ 을 이용하면 30분마다 해로쿠앱에 핑을 보내 절전모드로 전환되지 않는다. 매월 1000시간무료이므로(카드인증기준) 설정해두었다.(다른앱이 생기면 수정예정)
+- 브라우저 크기에 따라 메인이미지가 잘리는 부분 : 기존에 브라우저 크기가 늘어나면 메인이미지의 위아래가 잘리는 현상이 마음데 들지 않아, `height="500px"` -> `height: "70vw", maxHeight: "700px"`으로 변경하여 덜 잘리도록 하였고 브라우저 크기에 따라 height길이도 변경되어 조금 괜찮아진것 같다.
+  > 메인이미지 : https://github.com/yongchanson/MDBS/blob/209e23df348c636cf1fddc015716aef9ef1b607f/client/src/components/views/commons/MainImage.js
+  > 메인이미지를 사용한 부분(2) : https://github.com/yongchanson/MDBS/blob/209e23df348c636cf1fddc015716aef9ef1b607f/client/src/components/views/LandingPage/LandingPage.js
+  > https://github.com/yongchanson/MDBS/blob/209e23df348c636cf1fddc015716aef9ef1b607f/client/src/components/views/MovieDetail/MovieDetail.js
