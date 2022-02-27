@@ -121,6 +121,6 @@ export const Button = styled.button`
 ## 수정예정사항 : 해로쿠로 배포한 사이트가 첫접속이 느린 경우가 있는데 이를 보완할 수 있는 방법 구상, 창의 크기에 따라 이미지크기가 달라지는 부분, movieDetail, castPage는 Helmet의 link가 적용x 둘의 공통점은 주소에 :id가 들어감
 
 - 배포한 해로쿠 사이트 첫접속이 느린 경우 : https://kaffeine.herokuapp.com/ 을 이용하면 30분마다 해로쿠앱에 핑을 보내 절전모드로 전환되지 않는다. 매월 1000시간무료이므로(카드인증기준) 설정해두었다.(다른앱이 생기면 수정예정)
-- 브라우저 크기에 따라 메인이미지가 잘리는 부분 : 기존에 브라우저 크기가 늘어나면 메인이미지의 위아래가 잘리는 현상이 마음데 들지 않아, `height="500px"` -> `height: "70vw", maxHeight: "700px"`으로 변경하여 덜 잘리도록 하였고 브라우저 크기에 따라 height길이도 변경되어 조금 괜찮아진것 같다.
+- 브라우저 크기에 따라 메인이미지가 잘리는 부분 : 기존에 브라우저 크기가 늘어나면 메인이미지의 위아래가 잘리는 현상이 마음데 들지 않아, `height="500px"` -> `height: "70vw", maxHeight: "700px"`으로 변경하여 덜 잘리도록 하였고 브라우저 크기에 따라 height길이도 변경되어 큰 변화는 아니지만 조금 괜찮아진것 같다.
   > 메인이미지 : https://github.com/yongchanson/MDBS/blob/209e23df348c636cf1fddc015716aef9ef1b607f/client/src/components/views/commons/MainImage.js
   > 메인이미지를 사용한 부분(2) : https://github.com/yongchanson/MDBS/blob/209e23df348c636cf1fddc015716aef9ef1b607f/client/src/components/views/LandingPage/LandingPage.js > https://github.com/yongchanson/MDBS/blob/209e23df348c636cf1fddc015716aef9ef1b607f/client/src/components/views/MovieDetail/MovieDetail.js

@@ -10,7 +10,7 @@ import { Button } from "../commons/toggleButton";
 import { Helmet } from "react-helmet";
 import LoadingPage from "../Loading/LoadingPage";
 import { useQuery } from "react-query";
-// import Logo from "../commons/MDBS_LOGO.png";
+import Logo from "../commons/MDBS_LOGO.png";
 
 function MovieDetail(props) {
   let localValue = localStorage.getItem("themes") === "false" ? false : true;
@@ -56,70 +56,75 @@ function MovieDetail(props) {
   const { isLoading } = useQuery(["detail"], getDetail);
   // console.log(data, isLoading);
 
-  return isLoading ? (
-    <LoadingPage />
-  ) : (
-    <div>
+  return (
+    <>
       <Helmet>
-        {/* <link href={Logo} /> */}
+        <link href={Logo} />
         <title>{`${Movie.original_title} | ${Movie.title}`}</title>
       </Helmet>
-      {MainMovieImage && (
-        <MainImage
-          image={`${IMAGE_BASE_URL}w1280${Movie.backdrop_path}`}
-          title={Movie.title}
-          text={Movie.overview}
-        />
+      {isLoading ? (
+        <LoadingPage />
+      ) : (
+        <div>
+          {MainMovieImage && (
+            <MainImage
+              image={`${IMAGE_BASE_URL}w1280${Movie.backdrop_path}`}
+              title={Movie.title}
+              text={Movie.overview}
+            />
+          )}
+
+          {/* Body */}
+          <div style={{ width: "85%", margin: "1rem auto" }}>
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <Favorite
+                movieInfo={Movie}
+                movieId={movieId}
+                userFrom={localStorage.getItem("userId")}
+              />
+            </div>
+
+            {/* Movie Info */}
+            <MovieInfo movie={Movie} />
+
+            <br />
+
+            {/* Actors Grid*/}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                margin: "2rem",
+              }}
+            >
+              <Button theme={theme === localValue} onClick={toggleActorView}>
+                출연배우
+              </Button>
+            </div>
+
+            {ActorToggle && (
+              <Row gutter={[16, 16]}>
+                {Casts &&
+                  Casts.map((cast, index) => (
+                    <React.Fragment key={index}>
+                      <GridCards
+                        image={
+                          cast.profile_path
+                            ? `${IMAGE_BASE_URL}w500${cast.profile_path}`
+                            : noImg
+                        }
+                        castId={cast.id}
+                        castName={cast.name}
+                      />
+                    </React.Fragment>
+                  ))}
+              </Row>
+            )}
+          </div>
+        </div>
       )}
-
-      {/* Body */}
-      <div style={{ width: "85%", margin: "1rem auto" }}>
-        <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          <Favorite
-            movieInfo={Movie}
-            movieId={movieId}
-            userFrom={localStorage.getItem("userId")}
-          />
-        </div>
-
-        {/* Movie Info */}
-        <MovieInfo movie={Movie} />
-
-        <br />
-
-        {/* Actors Grid*/}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            margin: "2rem",
-          }}
-        >
-          <Button theme={theme === localValue} onClick={toggleActorView}>
-            출연배우
-          </Button>
-        </div>
-
-        {ActorToggle && (
-          <Row gutter={[16, 16]}>
-            {Casts &&
-              Casts.map((cast, index) => (
-                <React.Fragment key={index}>
-                  <GridCards
-                    image={
-                      cast.profile_path
-                        ? `${IMAGE_BASE_URL}w500${cast.profile_path}`
-                        : noImg
-                    }
-                    castId={cast.id}
-                    castName={cast.name}
-                  />
-                </React.Fragment>
-              ))}
-          </Row>
-        )}
-      </div>
-    </div>
+      ;
+    </>
   );
 }
 
