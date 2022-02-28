@@ -1,6 +1,6 @@
 # MDBS
 
-이 프로젝트는 프론트엔드(React) + 백엔드(Node.js, mongoDB) 기반의 영화관련 정보를 보여주는 웹사이트이며, 영화정보는 오픈API(TMDB)를 사용하였다. 기본구조는 boilerplate을 활용하여 제작하였다.
+이 프로젝트는 프론트엔드(React) + 백엔드(Node.js) 기반의 영화관련 정보를 보여주는 웹사이트이며, 영화정보는 오픈API(TMDB)를 사용하였다. 기본구조는 boilerplate을 활용하여 제작하였다.
 
 배포사이트 : https://mdbs.herokuapp.com/
 
@@ -25,10 +25,12 @@
 
 ### 2. 로고
 
-NavBar 로고 및 애니메이션효과 추가하였음. 그림판으로 png파일을 생성하고 이를 svg파일로 변환 후 "framer-motion"을 사용하여 애니메이션효과를 추가함
+NavBar 로고 및 애니메이션효과 추가하였음. 그림판으로 png파일을 생성하고 이를 svg파일로 변환 후 "framer-motion"을 사용하여 애니메이션효과를 추가함(Hover, Path)
 
 ![mdbslogo](https://user-images.githubusercontent.com/84462830/155280482-18486350-6cd4-4b22-97f1-d6a390334988.gif)
 
+> Hover : https://www.framer.com/docs/gestures/#hover
+> Path : https://www.framer.com/motion/
 > png -> svg 변환 : https://convertio.co/kr/
 
 ### 3. footer
@@ -81,8 +83,7 @@ react, node.js, mongoose, mongoDB, react-redux, antd, react-live-clock, styled-c
 client
 ┣ public
 ┃ ┃ ┣ _redirects
-┃ ┃ ┣ index.html
-┃ ┃ ┗ MDBS_LOGO.png
+┃ ┃ ┗ index.html
 ┣ src
 ┃ ┣ _actions
 ┃ ┃ ┣ types.js

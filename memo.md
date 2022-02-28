@@ -2,7 +2,8 @@
 
 ### ERROR : Can't import the named export 'Children' from non EcmaScript module (only default export is available)
 
-- `import { motion } from 'framer-motion/dist/es/index';` 으로 경로변경 OR
+- `import { motion } from 'framer-motion/dist/es/index';` 으로 경로변경
+- OR
 - "framer-motion" 5번대버전 -> "^4.1.17"으로 다운그레이드
 
 ### ERROR : Uncaught TypeError: undefined is not a function at Module../node_modules/framer-motion/dist/es/context/LazyContext.mjs
@@ -58,9 +59,9 @@ export const Menus = styled.div`
 
 - ToggleButton의 테마가 변경되지 않음(페이지 이동시 가지고 있는 테마를 그대로 유지함)
 - 라이트모드 상태로 페이지 이동시 ToggleButton에 테마가 적용x(반대상황은 적용)
-- 작은화면일시 생성되는 오른쪽 사이드메뉴(Drawer) 테마변경 되도록 변경
-  - antd에서 지원하는 dark/light mode를 이용하였음(원래는 기존의 App.js, NavBar.js처럼 Theme.js을 이용하려 했으나, 메뉴 바깥부분의 여백이 생기는 등의 좋지못한 결과가 있었음)
-- 작은화면일시 생성되는 오른쪽 사이드메뉴(Drawer) 아래 background-color 수정
+- 브라우저 크기가 작을 때 생성되는 오른쪽 사이드메뉴(Drawer) 테마변경 되도록 변경
+  - antd에서 지원하는 dark/light mode를 이용하였음(원래는 기존의 App.js, NavBar.js처럼 Theme.js을 이용 했으나, 메뉴 바깥부분의 여백이 생기는 등의 좋지못한 결과가 있었음)
+- 브라우저 크기가 작을 때 생성되는 오른쪽 사이드메뉴(Drawer) 아래 background-color 수정
   - NavBar.css의 .ant-drawer-wrapper-body의 background-color를 수정하면 변경이 가능하다.
   - scss 사용하여 조건에 따라 배경색 변경까지는 성공, 하지만 원하는 조건을 받아 색상을 변경하는 것은 실패하였다. 색상을 transport -> #3e91f7 으로 변경
 
@@ -118,9 +119,10 @@ export const Button = styled.button`
 
 ### heroku를 통해 프론트엔드 + 백엔드는 함께 배포함(https://mdbs.herokuapp.com/, 도메인 동일, 로그인가능), 문제는 도메인이 달라서(herokuapp.com뿐만 아니라 앞부분도 같아야 도메인이 동일하다고 할 수 있다고 한다.) 쿠키정책상 전달이 되지 않았던 것이다. 도메인이 다른 경우 쿠키전달도 해보고 싶어서 server/index.js에 `app.use(cors({origin: true, credentials: true}))`을 이용하여 전달해보았지만 실패하였다.
 
-## 수정예정사항 : 해로쿠로 배포한 사이트가 첫접속이 느린 경우가 있는데 이를 보완할 수 있는 방법 구상, 창의 크기에 따라 이미지크기가 달라지는 부분, movieDetail, castPage는 Helmet의 link가 적용x 둘의 공통점은 주소에 :id가 들어감
+## 수정예정사항 : 해로쿠로 배포한 사이트가 첫접속이 느린 경우가 있는데 이를 보완할 수 있는 방법 구상, 창의 크기에 따라 이미지크기가 달라지는 부분, movieDetail와 castPage는 Helmet의 link가 적용x(favicon변경x) 둘의 공통점은 주소에 :id가 들어감
 
 - 배포한 해로쿠 사이트 첫접속이 느린 경우 : https://kaffeine.herokuapp.com/ 을 이용하면 30분마다 해로쿠앱에 핑을 보내 절전모드로 전환되지 않는다. 매월 1000시간무료이므로(카드인증기준) 설정해두었다.(다른앱이 생기면 수정예정)
 - 브라우저 크기에 따라 메인이미지가 잘리는 부분 : 기존에 브라우저 크기가 늘어나면 메인이미지의 위아래가 잘리는 현상이 마음데 들지 않아, `height="500px"` -> `height: "70vw", maxHeight: "700px"`으로 변경하여 덜 잘리도록 하였고 브라우저 크기에 따라 height길이도 변경되어 큰 변화는 아니지만 조금 괜찮아진것 같다.
   > 메인이미지 : https://github.com/yongchanson/MDBS/blob/209e23df348c636cf1fddc015716aef9ef1b607f/client/src/components/views/commons/MainImage.js
   > 메인이미지를 사용한 부분(2) : https://github.com/yongchanson/MDBS/blob/209e23df348c636cf1fddc015716aef9ef1b607f/client/src/components/views/LandingPage/LandingPage.js > https://github.com/yongchanson/MDBS/blob/209e23df348c636cf1fddc015716aef9ef1b607f/client/src/components/views/MovieDetail/MovieDetail.js
+- 라우터에 매개변수(":")가 들어가는 movieDetail("/movie/:movieId")와 castPage("/cast/:castId")은 favicon이 변경되지 않는다. 특이점은 localhost 환경에서는 첫영화(메인이미지와 동일한 영화)에는 적용된다는 것이다.
